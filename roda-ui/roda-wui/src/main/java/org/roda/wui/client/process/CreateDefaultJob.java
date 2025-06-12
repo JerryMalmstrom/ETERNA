@@ -70,7 +70,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.http.client.URL;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -409,7 +408,7 @@ public class CreateDefaultJob extends Composite {
     if (pluginInfo.isInstalled()) {
       workflowList.add(panel);
     }
-    
+
     return panel;
   }
 
@@ -591,26 +590,27 @@ public class CreateDefaultJob extends Composite {
       }
       statusPanel.add(badgePanel);
       statusPanel.add(statusMessage);
-    } else {
-      badgePanel.setIcon(HtmlSnippetUtils.getStackIcon("far fa-circle", "fas fa-slash"));
-      badgePanel.addStyleName("badge-panel-dark");
-      badgePanel.setText(messages.pluginNotInstalledLabel());
-      statusMessage.setText(messages.pluginNotInstalledMessage());
+    } 
+    // else {
+    //   badgePanel.setIcon(HtmlSnippetUtils.getStackIcon("far fa-circle", "fas fa-slash"));
+    //   badgePanel.addStyleName("badge-panel-dark");
+    //   badgePanel.setText(messages.pluginNotInstalledLabel());
+    //   statusMessage.setText(messages.pluginNotInstalledMessage());
 
-      MarketInfo marketInfo = selectedPlugin.getMarketInfo();
-      Button installBtn = new Button(messages.marketStoreInstallLabel());
-      installBtn.addStyleName("btn btn-download plugin-install-btn");
-      if (marketInfo != null && marketInfo.getLinkToQuote().get("en") != null) {
-        installBtn.addClickHandler(clickEvent -> Window.open(marketInfo.getLinkToQuote().get("en") + URL.encodeQueryString(marketInfo.getName()), "_blank", ""));
-      } else {
-        installBtn.addClickHandler(clickEvent -> Window.open(RodaConstants.DEFAULT_MARKET_SUPPORT_URL, "_blank", ""));
-      }
-      installBtn.addStyleName("btn plugin-status-btn");
+    //   MarketInfo marketInfo = selectedPlugin.getMarketInfo();
+    //   Button installBtn = new Button(messages.marketStoreInstallLabel());
+    //   installBtn.addStyleName("btn btn-download plugin-install-btn");
+    //   if (marketInfo != null && marketInfo.getLinkToQuote().get("en") != null) {
+    //     installBtn.addClickHandler(clickEvent -> Window.open(marketInfo.getLinkToQuote().get("en") + URL.encodeQueryString(marketInfo.getName()), "_blank", ""));
+    //   } else {
+    //     installBtn.addClickHandler(clickEvent -> Window.open(RodaConstants.DEFAULT_MARKET_SUPPORT_URL, "_blank", ""));
+    //   }
+    //   installBtn.addStyleName("btn plugin-status-btn");
 
-      statusPanel.add(badgePanel);
-      statusPanel.add(statusMessage);
-      statusPanel.add(installBtn);
-    }
+    //   statusPanel.add(badgePanel);
+    //   statusPanel.add(statusMessage);
+    //   statusPanel.add(installBtn);
+    // }
     statusPanel.setTitle(statusMessage.getText());
     workflowListPluginStatus.add(statusPanel);
   }
