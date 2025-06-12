@@ -24,9 +24,6 @@
 							<g:Tab text="{messages.marketPluginsActionsTabLabel}">
 								<g:FlowPanel ui:field="workflowList" />
 							</g:Tab>
-							<g:Tab text="{messages.marketTabLabel}">
-								<g:FlowPanel ui:field="workflowStoreList" />
-							</g:Tab>
 						</g:TabPanel>
 					</g:FlowPanel>
 					<g:FlowPanel addStyleNames="pull-right plugin-details">

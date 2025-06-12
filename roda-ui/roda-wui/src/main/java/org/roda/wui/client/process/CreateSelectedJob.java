@@ -61,7 +61,6 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RadioButton;
-import com.google.gwt.user.client.ui.TabBar;
 import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -144,7 +143,7 @@ public abstract class CreateSelectedJob<T extends IsIndexed> extends Composite {
   TabPanel workflowTabPanel;
 
   @UiField
-  FlowPanel workflowList, workflowStoreList;
+  FlowPanel workflowList;
 
   @UiField
   FlowPanel workflowListPluginStatus;
@@ -283,7 +282,6 @@ public abstract class CreateSelectedJob<T extends IsIndexed> extends Composite {
                   @Override
                   public void onValueChange(ValueChangeEvent<Boolean> event) {
                     workflowList.clear();
-                    workflowStoreList.clear();
                     boolean noChecks = true;
 
                     if (plugins != null) {
@@ -383,11 +381,6 @@ public abstract class CreateSelectedJob<T extends IsIndexed> extends Composite {
           panelWidget.removeStyleName("plugin-list-item-selected");
         }
 
-        for (int i = 0; i < workflowStoreList.getWidgetCount(); i++) {
-          Widget panelWidget = workflowStoreList.getWidget(i);
-          panelWidget.removeStyleName("plugin-list-item-selected");
-        }
-
         if (selectedPluginId != null) {
           CreateSelectedJob.this.selectedPlugin = lookupPlugin(selectedPluginId);
           panel.addStyleName("plugin-list-item-selected");
@@ -419,9 +412,8 @@ public abstract class CreateSelectedJob<T extends IsIndexed> extends Composite {
 
     if (pluginInfo.isInstalled()) {
       workflowList.add(panel);
-    } else {
-      workflowStoreList.add(panel);
     }
+
     return panel;
   }
 
@@ -484,14 +476,6 @@ public abstract class CreateSelectedJob<T extends IsIndexed> extends Composite {
       } else {
         workflowPanel.setVisible(true);
         workflowOptions.setPluginInfo(selectedPlugin);
-      }
-    }
-
-    // Remove store tab if there is no item on store
-    if (workflowStoreList.getWidgetCount() == 0) {
-      TabBar tabBar = workflowTabPanel.getTabBar();
-      if (tabBar.getTabCount() > 1) {
-        workflowTabPanel.remove(1);
       }
     }
   }
