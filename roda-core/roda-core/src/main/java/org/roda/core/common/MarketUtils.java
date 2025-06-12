@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,7 +43,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class MarketUtils {
   private static String retrieveRodaVersion() throws MarketException {
     try (InputStream inputStream = MarketUtils.class.getClassLoader().getResourceAsStream("version.json");
-      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(inputStream), StandardCharsets.UTF_8))) {
       StringBuilder builder = new StringBuilder();
       for (String line = null; (line = bufferedReader.readLine()) != null;) {
         builder.append(line).append("\n");
@@ -54,7 +55,7 @@ public class MarketUtils {
         throw new MarketException("Unable to retrieve RODA version");
       }
       return version;
-    } catch (GenericException | IOException e) {
+    } catch (NullPointerException | GenericException | IOException e) {
       throw new MarketException("Unable to retrieve RODA version", e);
     }
   }
