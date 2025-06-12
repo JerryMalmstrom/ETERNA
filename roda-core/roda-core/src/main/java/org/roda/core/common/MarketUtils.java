@@ -52,11 +52,11 @@ public class MarketUtils {
       JsonNode jsonObject = JsonUtils.parseJson(builder.toString());
       String version = jsonObject.get("git.build.version").textValue();
       if (version == null || version.isEmpty()) {
-        throw new MarketException("Unable to retrieve RODA version");
+        throw new MarketException("Unable to retrieve ETERNA version");
       }
       return version;
     } catch (NullPointerException | GenericException | IOException e) {
-      throw new MarketException("Unable to retrieve RODA version", e);
+      throw new MarketException("Unable to retrieve ETERNA version", e);
     }
   }
   public static String getResultNodeFromJson(String jsonString) throws GenericException, JsonProcessingException {
