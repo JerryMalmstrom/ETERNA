@@ -4,7 +4,7 @@
 	order="10"
 	type="separator"
 	label="{\"en\": \"Identity\", \"pt\": \"Identificação\"}"
-	labeli18n="crosswalks.dissemination.html.ead.identityarea"
+	labeli18n="crosswalks.dissemination.html.ead_3.identityarea"
 ~}}
 
 {{~field
@@ -12,7 +12,7 @@
 	order="20"
 	type="text"
 	label='{"en": "Identifier", "pt": "Identificador"}'
-	labeli18n="crosswalks.dissemination.html.ead.reference"
+	labeli18n="crosswalks.dissemination.html.ead_3.reference"
 	auto-generate="id"
 	xpath="/*:ead/*:control/*:recordid/string() ##%## /*:ead/*:archdesc/*:did/*:unitid/string()"
 ~}}
@@ -22,12 +22,12 @@
 	order="30"
 	type="list"
 	label='{"en": "Description level", "pt": "Nível descritivo"}'
-	labeli18n="crosswalks.dissemination.html.ead.level"
+	labeli18n="crosswalks.dissemination.html.ead_3.level"
 	auto-generate="level"
 	value="fonds"
 	options='["fonds","class","collection","recordgrp","subgrp","subfonds","series","subseries","file","item"]'
 	optionsLabels='{"fonds": {"en":"Fonds", "pt":"Fundo"},"class": {"en":"Class", "pt":"Classe"},"collection": {"en":"Collection", "pt":"Coleção"},"recordgrp": {"en":"Record group", "pt":"Grupo de registos"},"subgrp": {"en":"Subgroup", "pt":"Subgrupo"},"subfonds": {"en":"Subfonds", "pt":"Subfundo"},"series": {"en":"Series", "pt":"Série"},"subseries": {"en":"Subseries", "pt":"Subsérie"},"file": {"en":"File", "pt":"Documento composto"},"item": {"en":"Item", "pt":"Documento simples"}}'
-	optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead.level"
+	optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead_3.level"
 	xpath="/*:ead/*:archdesc/@level/string()"
 ~}}
 
@@ -37,7 +37,7 @@
 	hidden="true"
 	type="text"
 	label='{"en": "Other level", "pt": "Outro nível"}'
-	labeli18n="crosswalks.dissemination.html.ead.otherlevel"
+	labeli18n="crosswalks.dissemination.html.ead_3.otherlevel"
 	xpath="/*:ead/*:archdesc/@otherlevel/string()"
 ~}}
 
@@ -46,7 +46,7 @@
 	order="50"
 	type="text"
 	label='{"en": "Title", "pt": "Título"}'
-	labeli18n="crosswalks.dissemination.html.ead.title"
+	labeli18n="crosswalks.dissemination.html.ead_3.title"
 	auto-generate="title"
 	xpath="/*:ead/*:control/*:filedesc/*:titlestmt/*:titleproper/string() ##%## /*:ead/*:archdesc/*:did/*:unittitle/string()"
 ~}}
@@ -56,7 +56,7 @@
 	order="60"
 	type="date"
 	label='{"en": "Initial date", "pt": "Data de início"}'
-	labeli18n="crosswalks.dissemination.html.ead.initialdate"
+	labeli18n="crosswalks.dissemination.html.ead_3.initialdate"
 	xpath="/*:ead/*:archdesc/*:did/*:unitdatestructured/*:daterange/*:fromdate/@standarddate/string() ##%## /*:ead/*:archdesc/*:did/*:unitdatestructured/*:daterange/*:fromdate/string()"
 ~}}
 
@@ -65,7 +65,7 @@
 	order="70"
 	type="date"
 	label='{"en": "Final date", "pt": "Data de fim"}'
-	labeli18n="crosswalks.dissemination.html.ead.finaldate"
+	labeli18n="crosswalks.dissemination.html.ead_3.finaldate"
 	xpath="/*:ead/*:archdesc/*:did/*:unitdatestructured/*:daterange/*:todate/@standarddate/string() ##%## /*:ead/*:archdesc/*:did/*:unitdatestructured/*:daterange/*:todate/string()"
 ~}}
 
@@ -75,7 +75,7 @@
 	order="80"
 	type="date"
 	label='{"en": "Descriptive date", "pt": "Data descritiva"}'
-	labeli18n="crosswalks.dissemination.html.ead.unitdate"
+	labeli18n="crosswalks.dissemination.html.ead_3.unitdate"
 	auto-generate="now"
 	xpath="/*:ead/*:control/*:maintenancehistory/*:maintenanceevent/*:eventdatetime/@standarddate/string() ##%## /*:ead/*:control/*:maintenancehistory/*:maintenanceevent/*:eventdatetime/string()"
 ~}}
@@ -85,7 +85,7 @@
 	order="90"
 	type="list"
 	label='{"en": "Country code", "pt": "Código do país"}'
-	labeli18n="crosswalks.dissemination.html.ead.countrycode"
+	labeli18n="crosswalks.dissemination.html.ead_3.countrycode"
 	options='["AD","AE","AF","AG","AI","AL","AM","AN","AO","AQ","AR","AS","AT","AU","AW","AX","AZ","BA","BB","BD","BE","BF","BG","BH","BI","BJ","BM","BN","BO","BR","BS","BT","BV","BW","BY","BZ","CA","CC","CD","CF","CG","CH","CI","CK","CL","CM","CN","CO","CR","CS","CU","CV","CX","CY","CZ","DE","DJ","DK","DM","DO","DZ","EC","EE","EG","EH","ER","ES","ET","FI","FJ","FK","FM","FO","FR","GA","GB","GD","GE","GF","GH","GI","GL","GM","GN","GP","GQ","GR","GS","GT","GU","GW","GY","HK","HM","HN","HR","HT","HU","ID","IE","IL","IN","IO","IQ","IR","IS","IT","JM","JO","JP","KE","KG","KH","KI","KM","KN","KP","KR","KW","KY","KZ","LA","LB","LC","LI","LK","LR","LS","LT","LU","LV","LY","MA","MC","MD","MG","MH","MK","ML","MM","MN","MO","MP","MQ","MR","MS","MT","MU","MV","MW","MX","MY","MZ","NA","NC","NE","NF","NG","NI","NL","NO","NP","NR","NU","NZ","OM","PA","PE","PF","PG","PH","PK","PL","PM","PN","PR","PS","PT","PW","PY","QA","RE","RO","RU","RW","SA","SB","SC","SD","SE","SG","SH","SI","SJ","SK","SL","SM","SN","SO","SR","ST","SV","SY","SZ","TC","TD","TF","TG","TH","TJ","TK","TL","TM","TN","TO","TR","TT","TV","TW","TZ","UA","UG","UM","US","UY","UZ","VA","VC","VE","VG","VI","VN","VU","WF","WS","YE","YT","ZA","ZM","ZW"]'
 	xpath="/*:ead/*:archdesc/*:did/*:unitid/@countrycode/string()"
 ~}}
@@ -95,7 +95,7 @@
 	order="100"
 	type="text"
 	label='{"en": "Repository code", "pt": "Código do repositório"}'
-	labeli18n="crosswalks.dissemination.html.ead.repositorycode"
+	labeli18n="crosswalks.dissemination.html.ead_3.repositorycode"
 	xpath="/*:ead/*:archdesc/*:did/*:unitid/@repositorycode/string()"
 ~}}
 
@@ -104,7 +104,7 @@
 	order="110"
 	type="text"
 	label='{"en": "Repository", "pt": "Repositório"}'
-	labeli18n="crosswalks.dissemination.html.ead.repository"
+	labeli18n="crosswalks.dissemination.html.ead_3.repository"
 	xpath="/*:ead/*:archdesc/*:did/*:repository/*:corpname/string()"
 ~}}
 
@@ -113,7 +113,7 @@
 	order="120"
 	type="separator"
 	label="{\"en\": \"Phyiscal description\", \"pt\": \"Descrição física\"}"
-	labeli18n="crosswalks.dissemination.html.ead.physdesc"
+	labeli18n="crosswalks.dissemination.html.ead_3.physdescarea"
 ~}}
 
 {{~field
@@ -121,7 +121,7 @@
 	order="121"
 	type="text"
 	label='{"en": "Quantity", "pt": "Quantidade"}'
-	labeli18n="crosswalks.dissemination.html.ead.quantity"
+	labeli18n="crosswalks.dissemination.html.ead_3.quantity"
 	xpath="/*:ead/*:archdesc/*:did/*:physdescstructured/*:quantity/string()"
 ~}}
 
@@ -130,7 +130,7 @@
 	order="122"
 	type="text"
 	label='{"en": "Unit type", "pt": "Tipo de unidade"}'
-	labeli18n="crosswalks.dissemination.html.ead.unittype"
+	labeli18n="crosswalks.dissemination.html.ead_3.unittype"
 	xpath="/*:ead/*:archdesc/*:did/*:physdescstructured/*:unittype/string()"
 ~}}
 
@@ -139,7 +139,7 @@
 	order="123"
 	type="text"
 	label='{"en": "Dimensions", "pt": "Dimensões"}'
-	labeli18n="crosswalks.dissemination.html.ead.dimensions"
+	labeli18n="crosswalks.dissemination.html.ead_3.dimensions"
 	xpath="/*:ead/*:archdesc/*:did/*:physdescstructured/*:dimensions/string()"
 ~}}
 
@@ -150,7 +150,7 @@
 	order="130"
 	type="text-area"
 	label='{"en": "Extent", "pt": "Extensões"}'
-	labeli18n="crosswalks.dissemination.html.ead.extent"
+	labeli18n="crosswalks.dissemination.html.ead_3.extent"
 	xpath="/*:ead/*:archdesc/*:did/*:physdesc/*:extent/string()"
 ~}}
 
@@ -159,7 +159,7 @@
 	order="140"
 	type="text-area"
 	label='{"en": "Material specification", "pt": "Especificação dos materiais"}'
-	labeli18n="crosswalks.dissemination.html.ead.materialspec"
+	labeli18n="crosswalks.dissemination.html.ead_3.materialspec"
 	xpath="/*:ead/*:archdesc/*:did/*:materialspec/string()"
 ~}}
 
@@ -169,7 +169,7 @@
 	order="150"
 	type="separator"
 	label='{"en": "Context", "pt": "Contexto"}'
-	labeli18n="crosswalks.dissemination.html.ead.contextarea"
+	labeli18n="crosswalks.dissemination.html.ead_3.contextarea"
 ~}}
 
 {{~field
@@ -177,7 +177,7 @@
 	order="160"
 	type="text"
 	label='{"en": "Name of creator(s)", "pt": "Nome do(s) autores"}'
-	labeli18n="crosswalks.dissemination.html.ead.creator"
+	labeli18n="crosswalks.dissemination.html.ead_3.creator"
 	xpath="/*:ead/*:archdesc/*:did/*:origination[lower-case(@label)='creator']/*:persname/*:part/string()"
 ~}}
 
@@ -186,7 +186,7 @@
 	order="170"
 	type="text"
 	label='{"en": "Producer", "pt": "Produtor"}'
-	labeli18n="crosswalks.dissemination.html.ead.producer"
+	labeli18n="crosswalks.dissemination.html.ead_3.producer"
 	xpath="/*:ead/*:archdesc/*:did/*:origination[lower-case(@label)='producer']/*:corpname/*:part/string()"
 ~}}
 
@@ -195,7 +195,7 @@
 	order="180"
 	type="text-area"
 	label='{"en": "Administrative and biographical history", "pt": "Bibliografia"}'
-	labeli18n="crosswalks.dissemination.html.ead.bioghist"
+	labeli18n="crosswalks.dissemination.html.ead_3.bioghist"
 	xpath="/*:ead/*:archdesc/*:bioghist/*:p/string()"
 ~}}
 
@@ -204,7 +204,7 @@
 	order="190"
 	type="text-area"
 	label='{"en": "Custodial history", "pt": "História custodial"}'
-	labeli18n="crosswalks.dissemination.html.ead.custodialhistory"
+	labeli18n="crosswalks.dissemination.html.ead_3.custodialhistory"
 	xpath="/*:ead/*:archdesc/*:custodhist/*:p/string()"
 ~}}
 
@@ -213,7 +213,7 @@
 	order="200"
 	type="text-area"
 	label='{"en": "Immediate source of acquisition or transfer", "pt": "Fonte imediata de aquisição ou transferência"}'
-	labeli18n="crosswalks.dissemination.html.ead.acquisitioninformation"
+	labeli18n="crosswalks.dissemination.html.ead_3.acquisitioninformation"
 	xpath="/*:ead/*:archdesc/*:acqinfo/*:p/string()"
 ~}}
 
@@ -223,7 +223,7 @@
 	order="250"
 	type="separator"
 	label='{"en": "Content and structure", "pt": "Conteúdo e estrutura"}'
-	labeli18n="crosswalks.dissemination.html.ead.contentarea"
+	labeli18n="crosswalks.dissemination.html.ead_3.contentarea"
 ~}}
 
 {{~field
@@ -231,7 +231,7 @@
 	order="260"
 	type="text-area"
 	label='{"en": "Scope and content", "pt": "Âmbito e conteúdo"}'
-	labeli18n="crosswalks.dissemination.html.ead.description"
+	labeli18n="crosswalks.dissemination.html.ead_3.description"
 	xpath="/*:ead/*:archdesc/*:scopecontent/*:p/string()"
 ~}}
 
@@ -240,7 +240,7 @@
 	order="270"
 	type="text-area"
 	label='{"en": "Appraisal, destruction and scheduling", "pt": "Avaliação, seleção e eliminação"}'
-	labeli18n="crosswalks.dissemination.html.ead.appraisal"
+	labeli18n="crosswalks.dissemination.html.ead_3.appraisal"
 	xpath="/*:ead/*:archdesc/*:appraisal/*:p/string()"
 ~}}
 
@@ -249,7 +249,7 @@
 	order="280"
 	type="text-area"
 	label='{"en": "Accruals", "pt": "Ingressos adicionais"}'
-	labeli18n="crosswalks.dissemination.html.ead.accruals"
+	labeli18n="crosswalks.dissemination.html.ead_3.accruals"
 	xpath="/*:ead/*:archdesc/*:accruals/*:p/string()"
 ~}}
 
@@ -258,7 +258,7 @@
 	order="290"
 	type="text-area"
 	label='{"en": "System of arrangement", "pt": "Sistema de organização"}'
-	labeli18n="crosswalks.dissemination.html.ead.arrangement"
+	labeli18n="crosswalks.dissemination.html.ead_3.arrangement"
 	xpath="/*:ead/*:archdesc/*:arrangement/*:p/string()"
 ~}}
 
@@ -268,14 +268,14 @@
 	order="300"
 	type="separator"
 	label='{"en": "Conditions of access and use", "pt": "Acesso e utilização"}'
-	labeli18n="crosswalks.dissemination.html.ead.accessarea"
+	labeli18n="crosswalks.dissemination.html.ead_3.accessarea"
 ~}}
 {{~field
 	name="accessrestrict"
 	order="310"
 	type="text-area"
 	label='{"en": "Conditions governing access", "pt": "Condições de acesso"}'
-	labeli18n="crosswalks.dissemination.html.ead.accessrestrictions"
+	labeli18n="crosswalks.dissemination.html.ead_3.accessrestrictions"
 	xpath="/*:ead/*:archdesc/*:accessrestrict/*:p/string()"
 ~}}
 
@@ -284,7 +284,7 @@
 	order="320"
 	type="text-area"
 	label='{"en": "Conditions governing reproduction", "pt": "Condições de reprodução"}'
-	labeli18n="crosswalks.dissemination.html.ead.userestrict"
+	labeli18n="crosswalks.dissemination.html.ead_3.userestrict"
 	xpath="/*:ead/*:archdesc/*:userestrict/*:p/string()"
 ~}}
 
@@ -293,7 +293,7 @@
 	order="330"
 	type="text"
 	label='{"en": "Language of material", "pt": "Idioma dos materiais"}'
-	labeli18n="crosswalks.dissemination.html.ead.languages"
+	labeli18n="crosswalks.dissemination.html.ead_3.languages"
 	auto-generate='language'
 	xpath="/*:ead/*:archdesc/*:did/*:langmaterial/*:language/text()[normalize-space()]"
 ~}}
@@ -304,7 +304,7 @@
 	order="340"
 	type="text"
 	label='{"en": "Language and script notes", "pt": "Idioma e escrita"}'
-	labeli18n="crosswalks.dissemination.html.ead.languageScriptNotes"
+	labeli18n="crosswalks.dissemination.html.ead_3.languageScriptNotes"
 	auto-generate='language'
 	xpath="/*:ead/*:archdesc/*:did/*:langmaterial/*:descriptivenote/*:p/text()[normalize-space()]"
 ~}}
@@ -314,7 +314,7 @@
 	order="350"
 	type="text-area"
 	label='{"en": "Physical Characteristics and technical requirements", "pt": "Características físicas e requisitos técnicos"}'
-	labeli18n="crosswalks.dissemination.html.ead.phystech"
+	labeli18n="crosswalks.dissemination.html.ead_3.phystech"
 	xpath="/*:ead/*:archdesc/*:phystech/*:p/string()"
 ~}}
 
@@ -324,7 +324,7 @@
 	order="360"
 	type="separator"
 	label='{"en": "Allied materials", "pt": "Documentação associada"}'
-	labeli18n="crosswalks.dissemination.html.ead.alliedarea"
+	labeli18n="crosswalks.dissemination.html.ead_3.alliedarea"
 ~}}
 
 {{~field
@@ -332,7 +332,7 @@
 	order="370"
 	type="text-area"
 	label='{"en": "Existence and location of originals", "pt": "Existência e localização de originais"}'
-	labeli18n="crosswalks.dissemination.html.ead.originalsloc"
+	labeli18n="crosswalks.dissemination.html.ead_3.originalsloc"
 	xpath="/*:ead/*:archdesc/*:originalsloc/*:p/string()"
 ~}}
 
@@ -341,7 +341,7 @@
 	order="380"
 	type="text-area"
 	label='{"en": "Existence and location of copies", "pt": "Existência e localização de cópias"}'
-	labeli18n="crosswalks.dissemination.html.ead.altformavail"
+	labeli18n="crosswalks.dissemination.html.ead_3.altformavail"
 	xpath="/*:ead/*:archdesc/*:altformavail/*:p/string()"
 ~}}
 
@@ -350,7 +350,7 @@
 	order="390"
 	type="text-area"
 	label='{"en": "Related units of description", "pt": "Unidades de descrição relacionadas"}'
-	labeli18n="crosswalks.dissemination.html.ead.relatedmaterials"
+	labeli18n="crosswalks.dissemination.html.ead_3.relatedmaterials"
 	xpath="/*:ead/*:archdesc/*:relatedmaterial/*:p/string()"
 ~}}
 
@@ -359,7 +359,7 @@
 	order="400"
 	type="text-area"
 	label='{"en": "Other finding aids", "pt": "Outros auxiliares de pesquisa"}'
-	labeli18n="crosswalks.dissemination.html.ead.otherfindaids"
+	labeli18n="crosswalks.dissemination.html.ead_3.otherfindaids"
 	xpath="/*:ead/*:archdesc/*:otherfindaid/*:p/string()"
 ~}}
 
@@ -368,7 +368,7 @@
 	order="410"
 	type="text-area"
 	label='{"en": "Publication notes", "pt": "Notas de publicação"}'
-	labeli18n="crosswalks.dissemination.html.ead.bibliography"
+	labeli18n="crosswalks.dissemination.html.ead_3.bibliography"
 	xpath="/*:ead/*:archdesc/*:bibliography/*:p/string()"
 ~}}
 
@@ -378,7 +378,7 @@
 	order="420"
 	type="separator"
 	label='{"en": "Notes", "pt": "Notas"}'
-	labeli18n="crosswalks.dissemination.html.ead.notesarea"
+	labeli18n="crosswalks.dissemination.html.ead_3.notesarea"
 ~}}
 
 {{~field
@@ -386,7 +386,7 @@
 	order="430"
 	type="text-area"
 	label='{"en": "Notes", "pt": "Notas"}'
-	labeli18n="crosswalks.dissemination.html.ead.notes"
+	labeli18n="crosswalks.dissemination.html.ead_3.notes"
 	xpath="/*:ead/*:archdesc/*:did/*:didnote[@localtype='generalnote']/string()"
 ~}}
 
@@ -396,7 +396,7 @@
 	order="440"
 	type="separator"
 	label='{"en": "Description control", "pt": "Controlo da descrição"}'
-	labeli18n="crosswalks.dissemination.html.ead.descriptioncontrolarea"
+	labeli18n="crosswalks.dissemination.html.ead_3.descriptioncontrolarea"
 ~}}
 
 {{! Rules or Conventions }}
@@ -405,7 +405,7 @@
 	order="450"
 	type="text-area"
 	label='{"en": "Rules or conventions", "pt": "Regras ou convenções"}'
-	labeli18n="crosswalks.dissemination.html.ead.rules"
+	labeli18n="crosswalks.dissemination.html.ead_3.rules"
 	xpath="/*:ead/*:control/*:conventiondeclaration/string()"
 ~}}
 
@@ -415,11 +415,11 @@
 	order="470"
 	type="list"
 	label='{"en": "Status of description", "pt": "Estado da descrição"}'
-	labeli18n="crosswalks.dissemination.html.ead.statusdescription"
+	labeli18n="crosswalks.dissemination.html.ead_3.statusdescription"
 	value="draft"
 	options='["final","revised","draft"]'
 	optionsLabels='{"final": {"en":"Final", "pt":"Final"},"revised": {"en":"Revised", "pt":"Revisto"},"draft": {"en":"Draft", "pt":"Rascunho"}}'
-	optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead.statusdescription"
+	optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead_3.statusdescription"
 	xpath="/*:ead/*:archdesc/*:odd[@localtype='statusdescription']/*:p/string()"
 ~}}
 
@@ -429,11 +429,11 @@
 	order="480"
 	type="list"
 	label='{"en": "Level of detail", "pt": "Nível de detalhe"}'
-	labeli18n="crosswalks.dissemination.html.ead.levelofdetail"
+	labeli18n="crosswalks.dissemination.html.ead_3.levelofdetail"
 	value="minimal"
 	options='["full","partial","minimal"]'
 	optionsLabels='{"full": {"en":"Full", "pt":"Completo"}, "partial": {"en":"Partial", "pt":"Parcial"}, "minimal": {"en":"Minimal", "pt":"Mínimo"}}'
-	optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead.levelofdetail"
+	optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead_3.levelofdetail"
 	xpath="/*:ead/*:archdesc/*:odd[@localtype='levelofdetail']/*:p/string()"
 ~}}
 
@@ -442,7 +442,7 @@
 	order="490"
 	type="date"
 	label='{"en": "Date of creation or revision", "pt": "Data de criação ou revisão"}'
-	labeli18n="crosswalks.dissemination.html.ead.processdates"
+	labeli18n="crosswalks.dissemination.html.ead_3.processdates"
 	auto-generate="now"
 	xpath="/*:ead/*:archdesc/*:processinfo/*:p/*:date/string()[normalize-space()]"
 ~}}
@@ -452,7 +452,7 @@
 	order="500"
 	type="text-area"
 	label='{"en": "Sources", "pt": "Fontes"}'
-	labeli18n="crosswalks.dissemination.html.ead.sources"
+	labeli18n="crosswalks.dissemination.html.ead_3.sources"
 	xpath="/*:ead/*:control/*:sources/*:source/*:sourceentry/string()"
 ~}}
 
@@ -461,7 +461,7 @@
 	order="510"
 	type="text-area"
 	label='{"en": "Archivist notes", "pt": "Notas do arquivista"}'
-	labeli18n="crosswalks.dissemination.html.ead.archivistNotes"
+	labeli18n="crosswalks.dissemination.html.ead_3.archivistNotes"
 	xpath="/*:ead/*:archdesc/*:processinfo/*:p/text()[normalize-space()]"
 ~}}
 
