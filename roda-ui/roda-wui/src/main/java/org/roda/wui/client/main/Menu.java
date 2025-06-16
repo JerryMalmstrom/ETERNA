@@ -215,7 +215,7 @@ public class Menu extends Composite {
     disposalConfirmation = disposalMenu.addItem(messages.title("disposal_confirmations"),
       createCommand(DisposalConfirmations.RESOLVER.getHistoryPath()));
     disposalConfirmation.addStyleName("disposal_confirmation_item");
-    overdueActions = disposalMenu.addItem(messages.title("overdue_actions"),
+    overdueActions = disposalMenu.addItem(messages.title("disposal_overdue_actions"),
       createCommand(CreateDisposalConfirmation.RESOLVER.getHistoryPath()));
     overdueActions.addStyleName("overdue_actions_item");
     disposalDestroyedRecords = disposalMenu.addItem(messages.title("disposal_destroyed_records"),

@@ -29,7 +29,7 @@ import org.roda.wui.client.common.lists.utils.AsyncTableCellOptions;
 import org.roda.wui.client.common.lists.utils.ConfigurableAsyncTableCell;
 import org.roda.wui.client.common.lists.utils.ListBuilder;
 import org.roda.wui.client.common.search.SearchWrapper;
-import org.roda.wui.client.disposal.DisposalConfirmations;
+import org.roda.wui.client.disposal.Disposal;
 import org.roda.wui.common.client.HistoryResolver;
 import org.roda.wui.common.client.tools.ListUtils;
 import org.roda.wui.common.client.widgets.HTMLWidgetWrapper;
@@ -85,12 +85,12 @@ public class CreateDisposalConfirmation extends Composite {
 
     @Override
     public List<String> getHistoryPath() {
-      return ListUtils.concat(DisposalConfirmations.RESOLVER.getHistoryPath(), getHistoryToken());
+      return ListUtils.concat(Disposal.RESOLVER.getHistoryPath(), getHistoryToken());
     }
 
     @Override
     public String getHistoryToken() {
-      return "create_confirmation";
+      return "overdue_records";
     }
   };
 

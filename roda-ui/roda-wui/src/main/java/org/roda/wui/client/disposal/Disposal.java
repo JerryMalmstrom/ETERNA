@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.roda.wui.client.common.UserLogin;
 import org.roda.wui.client.disposal.association.DisposalPolicyAssociationPanel;
+import org.roda.wui.client.disposal.confirmations.CreateDisposalConfirmation;
 import org.roda.wui.client.disposal.policy.DisposalPolicy;
 import org.roda.wui.common.client.HistoryResolver;
 import org.roda.wui.common.client.tools.HistoryUtils;
@@ -33,8 +34,9 @@ public class Disposal {
 
     @Override
     public void isCurrentUserPermitted(AsyncCallback<Boolean> callback) {
-      UserLogin.getInstance().checkRoles(new HistoryResolver[] {DisposalPolicy.RESOLVER, DisposalConfirmations.RESOLVER,
-        DisposalDestroyedRecords.RESOLVER}, false, callback);
+      UserLogin.getInstance()
+          .checkRoles(new HistoryResolver[] { DisposalPolicy.RESOLVER, DisposalConfirmations.RESOLVER,
+              DisposalDestroyedRecords.RESOLVER }, false, callback);
 
     }
 
@@ -78,6 +80,8 @@ public class Disposal {
       DisposalPolicy.RESOLVER.resolve(HistoryUtils.tail(historyTokens), callback);
     } else if (historyTokens.get(0).equals(DisposalConfirmations.RESOLVER.getHistoryToken())) {
       DisposalConfirmations.RESOLVER.resolve(HistoryUtils.tail(historyTokens), callback);
+    } else if (historyTokens.get(0).equals(CreateDisposalConfirmation.RESOLVER.getHistoryToken())) {
+      CreateDisposalConfirmation.RESOLVER.resolve(HistoryUtils.tail(historyTokens), callback);
     } else if (historyTokens.get(0).equals(DisposalDestroyedRecords.RESOLVER.getHistoryToken())) {
       DisposalDestroyedRecords.RESOLVER.resolve(HistoryUtils.tail(historyTokens), callback);
     } else if (historyTokens.get(0).equals(DisposalPolicyAssociationPanel.RESOLVER.getHistoryToken())) {

@@ -132,8 +132,6 @@ public class DisposalConfirmations extends Composite {
       String basePage = historyTokens.remove(0);
       if (ShowDisposalConfirmation.RESOLVER.getHistoryToken().equals(basePage)) {
         ShowDisposalConfirmation.RESOLVER.resolve(historyTokens, callback);
-      } else if (CreateDisposalConfirmation.RESOLVER.getHistoryToken().equals(basePage)) {
-        CreateDisposalConfirmation.RESOLVER.resolve(historyTokens, callback);
       }
     }
   }
