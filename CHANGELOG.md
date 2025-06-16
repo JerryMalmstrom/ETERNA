@@ -34,6 +34,26 @@
 ---
 
 # RODA Changelog
+## v5.7.6 (2025-06-02)
+#### Security
+- Updated dependency of jaxb for glassfish
+
+---
+
+To try this version, check the [install instructions](https://github.com/keeps/roda/blob/master/deploys/standalone/README.md).
+
+---
+
+## v5.7.5 (2025-05-19)
+#### Security
+- Several dependency major upgrades to fix security vulnerabilities
+
+---
+
+To try this version, check the [install instructions](https://github.com/keeps/roda/blob/master/deploys/standalone/README.md).
+
+---
+
 ## v5.7.4 (2025-04-29)
 #### Enhancements
 -  Improve support for E-ARK SIP administrative metadata (amdSec) #3380
