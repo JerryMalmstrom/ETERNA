@@ -7,7 +7,7 @@
     <url>https://www.whitered.se/eterna</url>
     <groupId>org.roda-project</groupId>
     <artifactId>eterna</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <packaging>pom</packaging>
     <description>ETERNA is a full-featured open-source digital preservation repository providing all the
         functionality
@@ -483,10 +483,9 @@
                 <version>4.0.2</version>
             </dependency>
             <dependency>
-                <groupId>com.sun.xml.bind</groupId>
-                <artifactId>jaxb-impl</artifactId>
-                <version>4.0.2</version>
-                <scope>runtime</scope>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>4.0.5</version>
             </dependency>
             <dependency>
                 <!-- Import dependency management from Spring Boot -->
@@ -650,34 +649,34 @@
                 <groupId>org.roda-project</groupId>
                 <artifactId>roda-common-data</artifactId>
                 <classifier>sources</classifier>
-                <version>0.2.0</version>
+                <version>0.3.0</version>
             </dependency>
             <dependency>
                 <groupId>org.roda-project</groupId>
                 <artifactId>roda-common-data</artifactId>
-                <version>0.2.0</version>
+                <version>0.3.0</version>
             </dependency>
             <dependency>
                 <groupId>org.roda-project</groupId>
                 <artifactId>roda-common-utils</artifactId>
-                <version>0.2.0</version>
+                <version>0.3.0</version>
             </dependency>
             <dependency>
                 <groupId>org.roda-project</groupId>
                 <artifactId>roda-core</artifactId>
-                <version>0.2.0</version>
+                <version>0.3.0</version>
             </dependency>
             <dependency>
                 <groupId>org.roda-project</groupId>
                 <artifactId>roda-core-tests</artifactId>
-                <version>0.2.0</version>
+                <version>0.3.0</version>
             </dependency>
             <dependency>
                 <groupId>org.roda-project</groupId>
                 <artifactId>roda-core-tests</artifactId>
                 <type>test-jar</type>
                 <scope>test</scope>
-                <version>0.2.0</version>
+                <version>0.3.0</version>
             </dependency>
             <!-- RODA own modules dependencies - end -->
             <dependency>
@@ -1063,6 +1062,10 @@
                     <exclusion>
                         <groupId>com.sun.activation</groupId>
                         <artifactId>jakarta.activation</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>jakarta.xml.bind</groupId>
+                        <artifactId>jakarta.xml.bind-api</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>

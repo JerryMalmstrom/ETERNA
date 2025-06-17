@@ -8,7 +8,7 @@
   <parent>
     <groupId>org.roda-project</groupId>
     <artifactId>roda-common</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -40,6 +40,15 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>jakarta.xml.bind</groupId>

@@ -1,19 +1,474 @@
-{{~field name="id" 			order=1 auto-generate='id' label="{\"en\": \"ID\"}" xpath="//*:recordid/string() ##%## //*:unitid/string()"~}}
-{{~field name="title" 		order='2' auto-generate='title' label="{\"en\": \"Title\"}" xpath="//*:titleproper/string() ##%## //*:unittitle/string()"~}}
-{{~field name="producer" 	label="{\"en\": \"Producer\"}" xpath="//*:agencyname/string() ##%## //*:origination[@label='producer']/*:corpname/*:part/string()"~}}
-{{~field name="descDate" 	order="3" type="date" auto-generate="now" label="{\"en\": \"Description date\"}" xpath="//*:eventdatetime/@standardtime/string() ##%## //*:eventdatetime/string()"~}}
-{{~field name="level" 					order="80" type="list" value="fonds" options="[\"fonds\",\"class\",\"collection\",\"recordgrp\",\"subgrp\",\"subfonds\",\"series\",\"subseries\",\"file\",\"item\"]" optionsLabels="{\"fonds\": {\"en\":\"Fonds\", \"pt\":\"Fundo\"},\"class\": {\"en\":\"Class\", \"pt\":\"Classe\"},\"collection\": {\"en\":\"Collection\", \"pt\":\"Coleção\"},\"recordgrp\": {\"en\":\"Record group\", \"pt\":\"Grupo de registos\"},\"subgrp\": {\"en\":\"Subgroup\", \"pt\":\"Subgrupo\"},\"subfonds\": {\"en\":\"Subfonds\", \"pt\":\"Subfundo\"},\"series\": {\"en\":\"Series\", \"pt\":\"Série\"},\"subseries\": {\"en\":\"Subseries\", \"pt\":\"Subsérie\"},\"file\": {\"en\":\"File\", \"pt\":\"Documento composto\"},\"item\": {\"en\":\"Item\", \"pt\":\"Documento simples\"}}" optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead.levl" auto-generate="level" label="{\"i18n\": \"crosswalks.dissemination.html.ead.level\", \"en\": \"Description level\", \"pt\": \"Nível descritivo\"}" xpath="//*:archdesc/@level/string()" ~}}
-{{~field name="dateInitial" order="4" type="date" label="{\"en\": \"Initial date\"}" xpath="//*:fromdate/@standarddate/string() ##%## //*:fromdate/string()"~}}
-{{~field name="dateFinal" 	order="5" type="date" label="{\"en\": \"Final date\"}" xpath="//*:todate/@standarddate/string() ##%## //*:todate/string()"~}}
-{{~field name="creator" 	label="{\"en\": \"Creator\"}" xpath="//*:origination[@label='producer']/*:corpname/*:part/string()"~}}
-{{~field name="language" 	auto-generate='language' label="{\"en\": \"Language\"}" xpath="//*:language/string()"~}}
-{{~field name="description" type='text-area' label="{\"en\": \"Description\"}" xpath="//*:scopecontent/*:p/string()"~}}
-{{~field name="rights" 		label="{\"en\": \"Rights\"}" xpath="//*:userestrict/*:p/string()"~}}
+{{! Identity section}}
+{{~field
+	name="identityArea"
+	order="10"
+	type="separator"
+	label="{\"en\": \"Identity\", \"pt\": \"Identificação\"}"
+	labeli18n="crosswalks.dissemination.html.ead_3.identityarea"
+~}}
+
+{{~field
+	name="id"
+	order="20"
+	type="text"
+	label='{"en": "Identifier", "pt": "Identificador"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.reference"
+	auto-generate="id"
+	xpath="/*:ead/*:control/*:recordid/string() ##%## /*:ead/*:archdesc/*:did/*:unitid/string()"
+~}}
+
+{{~field
+	name="level"
+	order="30"
+	type="list"
+	label='{"en": "Description level", "pt": "Nível descritivo"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.level"
+	auto-generate="level"
+	value="fonds"
+	options='["fonds","class","collection","recordgrp","subgrp","subfonds","series","subseries","file","item"]'
+	optionsLabels='{"fonds": {"en":"Fonds", "pt":"Fundo"},"class": {"en":"Class", "pt":"Classe"},"collection": {"en":"Collection", "pt":"Coleção"},"recordgrp": {"en":"Record group", "pt":"Grupo de registos"},"subgrp": {"en":"Subgroup", "pt":"Subgrupo"},"subfonds": {"en":"Subfonds", "pt":"Subfundo"},"series": {"en":"Series", "pt":"Série"},"subseries": {"en":"Subseries", "pt":"Subsérie"},"file": {"en":"File", "pt":"Documento composto"},"item": {"en":"Item", "pt":"Documento simples"}}'
+	optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead_3.level"
+	xpath="/*:ead/*:archdesc/@level/string()"
+~}}
+
+{{~field
+	name="otherlevel"
+	order="40"
+	hidden="true"
+	type="text"
+	label='{"en": "Other level", "pt": "Outro nível"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.otherlevel"
+	xpath="/*:ead/*:archdesc/@otherlevel/string()"
+~}}
+
+{{~field
+	name="title"
+	order="50"
+	type="text"
+	label='{"en": "Title", "pt": "Título"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.title"
+	auto-generate="title"
+	xpath="/*:ead/*:control/*:filedesc/*:titlestmt/*:titleproper/string() ##%## /*:ead/*:archdesc/*:did/*:unittitle/string()"
+~}}
+
+{{~field
+	name="dateInitial"
+	order="60"
+	type="date"
+	label='{"en": "Initial date", "pt": "Data de início"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.initialdate"
+	xpath="/*:ead/*:archdesc/*:did/*:unitdatestructured/*:daterange/*:fromdate/@standarddate/string() ##%## /*:ead/*:archdesc/*:did/*:unitdatestructured/*:daterange/*:fromdate/string()"
+~}}
+
+{{~field
+	name="dateFinal"
+	order="70"
+	type="date"
+	label='{"en": "Final date", "pt": "Data de fim"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.finaldate"
+	xpath="/*:ead/*:archdesc/*:did/*:unitdatestructured/*:daterange/*:todate/@standarddate/string() ##%## /*:ead/*:archdesc/*:did/*:unitdatestructured/*:daterange/*:todate/string()"
+~}}
+
+{{! TODO: Check if maintenanceevent element contains a child element: <eventtype value="created"/>}}
+{{~field
+	name="descDate"
+	order="80"
+	type="date"
+	label='{"en": "Descriptive date", "pt": "Data descritiva"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.unitdate"
+	auto-generate="now"
+	xpath="/*:ead/*:control/*:maintenancehistory/*:maintenanceevent/*:eventdatetime/@standarddate/string() ##%## /*:ead/*:control/*:maintenancehistory/*:maintenanceevent/*:eventdatetime/string()"
+~}}
+
+{{~field
+	name="countryCode"
+	order="90"
+	type="list"
+	label='{"en": "Country code", "pt": "Código do país"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.countrycode"
+	options='["AD","AE","AF","AG","AI","AL","AM","AN","AO","AQ","AR","AS","AT","AU","AW","AX","AZ","BA","BB","BD","BE","BF","BG","BH","BI","BJ","BM","BN","BO","BR","BS","BT","BV","BW","BY","BZ","CA","CC","CD","CF","CG","CH","CI","CK","CL","CM","CN","CO","CR","CS","CU","CV","CX","CY","CZ","DE","DJ","DK","DM","DO","DZ","EC","EE","EG","EH","ER","ES","ET","FI","FJ","FK","FM","FO","FR","GA","GB","GD","GE","GF","GH","GI","GL","GM","GN","GP","GQ","GR","GS","GT","GU","GW","GY","HK","HM","HN","HR","HT","HU","ID","IE","IL","IN","IO","IQ","IR","IS","IT","JM","JO","JP","KE","KG","KH","KI","KM","KN","KP","KR","KW","KY","KZ","LA","LB","LC","LI","LK","LR","LS","LT","LU","LV","LY","MA","MC","MD","MG","MH","MK","ML","MM","MN","MO","MP","MQ","MR","MS","MT","MU","MV","MW","MX","MY","MZ","NA","NC","NE","NF","NG","NI","NL","NO","NP","NR","NU","NZ","OM","PA","PE","PF","PG","PH","PK","PL","PM","PN","PR","PS","PT","PW","PY","QA","RE","RO","RU","RW","SA","SB","SC","SD","SE","SG","SH","SI","SJ","SK","SL","SM","SN","SO","SR","ST","SV","SY","SZ","TC","TD","TF","TG","TH","TJ","TK","TL","TM","TN","TO","TR","TT","TV","TW","TZ","UA","UG","UM","US","UY","UZ","VA","VC","VE","VG","VI","VN","VU","WF","WS","YE","YT","ZA","ZM","ZW"]'
+	xpath="/*:ead/*:archdesc/*:did/*:unitid/@countrycode/string()"
+~}}
+
+{{~field
+	name="repositoryCode"
+	order="100"
+	type="text"
+	label='{"en": "Repository code", "pt": "Código do repositório"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.repositorycode"
+	xpath="/*:ead/*:archdesc/*:did/*:unitid/@repositorycode/string()"
+~}}
+
+{{~field
+	name="repository"
+	order="110"
+	type="text"
+	label='{"en": "Repository", "pt": "Repositório"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.repository"
+	xpath="/*:ead/*:archdesc/*:did/*:repository/*:corpname/string()"
+~}}
+
+{{~field
+	name="physdesc"
+	order="120"
+	type="separator"
+	label="{\"en\": \"Phyiscal description\", \"pt\": \"Descrição física\"}"
+	labeli18n="crosswalks.dissemination.html.ead_3.physdescarea"
+~}}
+
+{{~field
+	name="quantity"
+	order="121"
+	type="text"
+	label='{"en": "Quantity", "pt": "Quantidade"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.quantity"
+	xpath="/*:ead/*:archdesc/*:did/*:physdescstructured/*:quantity/string()"
+~}}
+
+{{~field
+	name="unittype"
+	order="122"
+	type="text"
+	label='{"en": "Unit type", "pt": "Tipo de unidade"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.unittype"
+	xpath="/*:ead/*:archdesc/*:did/*:physdescstructured/*:unittype/string()"
+~}}
+
+{{~field
+	name="dimensions"
+	order="123"
+	type="text"
+	label='{"en": "Dimensions", "pt": "Dimensões"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.dimensions"
+	xpath="/*:ead/*:archdesc/*:did/*:physdescstructured/*:dimensions/string()"
+~}}
+
+{{! Deprecated }}
+{{!
+{{~field
+	name="extent"
+	order="130"
+	type="text-area"
+	label='{"en": "Extent", "pt": "Extensões"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.extent"
+	xpath="/*:ead/*:archdesc/*:did/*:physdesc/*:extent/string()"
+~}}
+
+{{~field
+	name="materialspec"
+	order="140"
+	type="text-area"
+	label='{"en": "Material specification", "pt": "Especificação dos materiais"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.materialspec"
+	xpath="/*:ead/*:archdesc/*:did/*:materialspec/string()"
+~}}
+
+{{! Context Area }}
+{{~field
+	name="contextArea"
+	order="150"
+	type="separator"
+	label='{"en": "Context", "pt": "Contexto"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.contextarea"
+~}}
+
+{{~field
+	name="creator"
+	order="160"
+	type="text"
+	label='{"en": "Name of creator(s)", "pt": "Nome do(s) autores"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.creator"
+	xpath="/*:ead/*:archdesc/*:did/*:origination[lower-case(@label)='creator']/*:persname/*:part/string()"
+~}}
+
+{{~field
+	name="producer"
+	order="170"
+	type="text"
+	label='{"en": "Producer", "pt": "Produtor"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.producer"
+	xpath="/*:ead/*:archdesc/*:did/*:origination[lower-case(@label)='producer']/*:corpname/*:part/string()"
+~}}
+
+{{~field
+	name="bioghist"
+	order="180"
+	type="text-area"
+	label='{"en": "Administrative and biographical history", "pt": "Bibliografia"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.bioghist"
+	xpath="/*:ead/*:archdesc/*:bioghist/*:p/string()"
+~}}
+
+{{~field
+	name="custodhist"
+	order="190"
+	type="text-area"
+	label='{"en": "Custodial history", "pt": "História custodial"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.custodialhistory"
+	xpath="/*:ead/*:archdesc/*:custodhist/*:p/string()"
+~}}
+
+{{~field
+	name="acqinfo"
+	order="200"
+	type="text-area"
+	label='{"en": "Immediate source of acquisition or transfer", "pt": "Fonte imediata de aquisição ou transferência"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.acquisitioninformation"
+	xpath="/*:ead/*:archdesc/*:acqinfo/*:p/string()"
+~}}
+
+{{! Content and structure area }}
+{{~field
+	name="contentArea"
+	order="250"
+	type="separator"
+	label='{"en": "Content and structure", "pt": "Conteúdo e estrutura"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.contentarea"
+~}}
+
+{{~field
+	name="scopeContent"
+	order="260"
+	type="text-area"
+	label='{"en": "Scope and content", "pt": "Âmbito e conteúdo"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.description"
+	xpath="/*:ead/*:archdesc/*:scopecontent/*:p/string()"
+~}}
+
+{{~field
+	name="appraisal"
+	order="270"
+	type="text-area"
+	label='{"en": "Appraisal, destruction and scheduling", "pt": "Avaliação, seleção e eliminação"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.appraisal"
+	xpath="/*:ead/*:archdesc/*:appraisal/*:p/string()"
+~}}
+
+{{~field
+	name="accruals"
+	order="280"
+	type="text-area"
+	label='{"en": "Accruals", "pt": "Ingressos adicionais"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.accruals"
+	xpath="/*:ead/*:archdesc/*:accruals/*:p/string()"
+~}}
+
+{{~field
+	name="arrangement"
+	order="290"
+	type="text-area"
+	label='{"en": "System of arrangement", "pt": "Sistema de organização"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.arrangement"
+	xpath="/*:ead/*:archdesc/*:arrangement/*:p/string()"
+~}}
+
+{{! Conditions of access and use area }}
+{{~field
+	name="accessArea"
+	order="300"
+	type="separator"
+	label='{"en": "Conditions of access and use", "pt": "Acesso e utilização"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.accessarea"
+~}}
+{{~field
+	name="accessrestrict"
+	order="310"
+	type="text-area"
+	label='{"en": "Conditions governing access", "pt": "Condições de acesso"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.accessrestrictions"
+	xpath="/*:ead/*:archdesc/*:accessrestrict/*:p/string()"
+~}}
+
+{{~field
+	name="userestrict"
+	order="320"
+	type="text-area"
+	label='{"en": "Conditions governing reproduction", "pt": "Condições de reprodução"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.userestrict"
+	xpath="/*:ead/*:archdesc/*:userestrict/*:p/string()"
+~}}
+
+{{~field
+	name="language"
+	order="330"
+	type="text"
+	label='{"en": "Language of material", "pt": "Idioma dos materiais"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.languages"
+	auto-generate='language'
+	xpath="/*:ead/*:archdesc/*:did/*:langmaterial/*:language/text()[normalize-space()]"
+~}}
+
+{{! Todo: Split}}
+{{~field
+	name="languageScriptNotes"
+	order="340"
+	type="text"
+	label='{"en": "Language and script notes", "pt": "Idioma e escrita"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.languageScriptNotes"
+	auto-generate='language'
+	xpath="/*:ead/*:archdesc/*:did/*:langmaterial/*:descriptivenote/*:p/text()[normalize-space()]"
+~}}
+
+{{~field
+	name="phystech"
+	order="350"
+	type="text-area"
+	label='{"en": "Physical Characteristics and technical requirements", "pt": "Características físicas e requisitos técnicos"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.phystech"
+	xpath="/*:ead/*:archdesc/*:phystech/*:p/string()"
+~}}
+
+{{! Allied materials area }}
+{{~field
+	name="alliedArea"
+	order="360"
+	type="separator"
+	label='{"en": "Allied materials", "pt": "Documentação associada"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.alliedarea"
+~}}
+
+{{~field
+	name="originalsloc"
+	order="370"
+	type="text-area"
+	label='{"en": "Existence and location of originals", "pt": "Existência e localização de originais"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.originalsloc"
+	xpath="/*:ead/*:archdesc/*:originalsloc/*:p/string()"
+~}}
+
+{{~field
+	name="altformavail"
+	order="380"
+	type="text-area"
+	label='{"en": "Existence and location of copies", "pt": "Existência e localização de cópias"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.altformavail"
+	xpath="/*:ead/*:archdesc/*:altformavail/*:p/string()"
+~}}
+
+{{~field
+	name="relatedmaterial"
+	order="390"
+	type="text-area"
+	label='{"en": "Related units of description", "pt": "Unidades de descrição relacionadas"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.relatedmaterials"
+	xpath="/*:ead/*:archdesc/*:relatedmaterial/*:p/string()"
+~}}
+
+{{~field
+	name="otherfindaid"
+	order="400"
+	type="text-area"
+	label='{"en": "Other finding aids", "pt": "Outros auxiliares de pesquisa"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.otherfindaids"
+	xpath="/*:ead/*:archdesc/*:otherfindaid/*:p/string()"
+~}}
+
+{{~field
+	name="bibliography"
+	order="410"
+	type="text-area"
+	label='{"en": "Publication notes", "pt": "Notas de publicação"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.bibliography"
+	xpath="/*:ead/*:archdesc/*:bibliography/*:p/string()"
+~}}
+
+{{! Notes area }}
+{{~field
+	name="notesArea"
+	order="420"
+	type="separator"
+	label='{"en": "Notes", "pt": "Notas"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.notesarea"
+~}}
+
+{{~field
+	name="notes"
+	order="430"
+	type="text-area"
+	label='{"en": "Notes", "pt": "Notas"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.notes"
+	xpath="/*:ead/*:archdesc/*:did/*:didnote[@localtype='generalnote']/string()"
+~}}
+
+{{! Description control area }}
+{{~field
+	name="descriptionControlArea"
+	order="440"
+	type="separator"
+	label='{"en": "Description control", "pt": "Controlo da descrição"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.descriptioncontrolarea"
+~}}
+
+{{! Rules or Conventions }}
+{{~field
+	name="rules"
+	order="450"
+	type="text-area"
+	label='{"en": "Rules or conventions", "pt": "Regras ou convenções"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.rules"
+	xpath="/*:ead/*:control/*:conventiondeclaration/string()"
+~}}
+
+{{! Custom }}
+{{~field
+	name="statusDescription"
+	order="470"
+	type="list"
+	label='{"en": "Status of description", "pt": "Estado da descrição"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.statusdescription"
+	value="draft"
+	options='["final","revised","draft"]'
+	optionsLabels='{"final": {"en":"Final", "pt":"Final"},"revised": {"en":"Revised", "pt":"Revisto"},"draft": {"en":"Draft", "pt":"Rascunho"}}'
+	optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead_3.statusdescription"
+	xpath="/*:ead/*:archdesc/*:odd[@localtype='statusdescription']/*:p/string()"
+~}}
+
+{{! Custom }}
+{{~field
+	name="levelOfDetail"
+	order="480"
+	type="list"
+	label='{"en": "Level of detail", "pt": "Nível de detalhe"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.levelofdetail"
+	value="minimal"
+	options='["full","partial","minimal"]'
+	optionsLabels='{"full": {"en":"Full", "pt":"Completo"}, "partial": {"en":"Partial", "pt":"Parcial"}, "minimal": {"en":"Minimal", "pt":"Mínimo"}}'
+	optionsLabelI18nKeyPrefix="crosswalks.dissemination.html.ead_3.levelofdetail"
+	xpath="/*:ead/*:archdesc/*:odd[@localtype='levelofdetail']/*:p/string()"
+~}}
+
+{{~field
+	name="processInfoDate"
+	order="490"
+	type="date"
+	label='{"en": "Date of creation or revision", "pt": "Data de criação ou revisão"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.processdates"
+	auto-generate="now"
+	xpath="/*:ead/*:archdesc/*:processinfo/*:p/*:date/string()[normalize-space()]"
+~}}
+
+{{~field
+	name="sources"
+	order="500"
+	type="text-area"
+	label='{"en": "Sources", "pt": "Fontes"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.sources"
+	xpath="/*:ead/*:control/*:sources/*:source/*:sourceentry/string()"
+~}}
+
+{{~field
+	name="archivistNotes"
+	order="510"
+	type="text-area"
+	label='{"en": "Archivist notes", "pt": "Notas do arquivista"}'
+	labeli18n="crosswalks.dissemination.html.ead_3.archivistNotes"
+	xpath="/*:ead/*:archdesc/*:processinfo/*:p/text()[normalize-space()]"
+~}}
+
 <?xml version="1.0" encoding="utf-8" ?>
 <ead xmlns="http://ead3.archivists.org/schema/"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://ead3.archivists.org/schema/ ../schemas/ead3.xsd">
-	<control>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ead3.archivists.org/schema/ ../schemas/ead3.xsd">
+	<control countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
 		<recordid>{{id}}</recordid>
 		<filedesc>
 			<titlestmt>
@@ -24,49 +479,252 @@
 		<maintenanceagency>
 			<agencyname>{{producer}}</agencyname>
 		</maintenanceagency>
+		{{! Fix indentation }}
+		{{~#if rules~}}
+		<conventiondeclaration>
+			<citation>{{rules}}</citation>
+		</conventiondeclaration>
+		{{! Fix indentation }}
+		{{~/if~}}
 		<maintenancehistory>
 			<maintenanceevent>
 				<eventtype value="created"/>
-				<eventdatetime standarddatetime='{{descDate}}'>{{descDate}}
-				</eventdatetime>
+				<eventdatetime standarddatetime="{{descDate}}">{{descDate}}</eventdatetime>
 				<agenttype value="machine"/>
 				<agent>ETERNA</agent>
-				<eventdescription>Creation of EAD record using ETERNA</eventdescription>
+				<eventdescription>Created with ETERNA</eventdescription>
 			</maintenanceevent>
 		</maintenancehistory>
+		{{~#if sources~}}
+		{{! Fix indentation }}
+		<sources>
+			<source>
+				<sourceentry>{{sources}}</sourceentry>
+			</source>
+		</sources>
+		{{~/if~}}
+	{{! Fix indentation }}
 	</control>
-	<archdesc
-		level='{{level}}'>
+	<archdesc{{#if level}} level="{{level}}"{{/if}}{{#if otherlevel}} otherlevel="{{otherlevel}}"{{/if}}>
 		<did>
-			<unitid>{{id}}</unitid>
+			{{! Fix indentation }}
+			{{~#ifCond "||" countryCode repositoryCode id~}}
+			<unitid{{#if countryCode}} countrycode="{{countryCode}}"{{/if}}{{#if repositoryCode}} repositorycode="{{repositoryCode}}"{{/if}}>{{id}}</unitid>
+			{{! Fix indentation }}
+			{{~/ifCond~}}
+			{{~#if title~}}
 			<unittitle>{{title}}</unittitle>
-
+			{{/if}}
+			{{~#ifCond "||" dateInitial dateFinal~}}
 			<unitdatestructured calendar="gregorian">
 				<daterange>
-					<fromdate standarddate='{{dateInitial}}'>{{dateInitial}}</fromdate>
-					<todate standarddate='{{dateFinal}}'>{{dateFinal}}</todate>
+					{{! Fix indentation }}
+					{{~#if dateInitial~}}<fromdate standarddate="{{dateInitial}}">{{dateInitial}}</fromdate>{{/if}}
+					{{~#if dateFinal~}}
+					{{! Fix indentation }}
+					{{/if}}
+					{{~#if dateFinal~}}<todate standarddate="{{dateFinal}}">{{dateFinal}}</todate>{{/if}}
 				</daterange>
 			</unitdatestructured>
-			<origination label="producer">
+			{{! Fix indentation }}
+			{{~/ifCond~}}
+			{{! Physical Description }}
+			{{~#if extent~}}
+			<!--
+			<physdesc>
+				<extent>{{extent}}</extent>
+			</physdesc>
+			-->
+			{{! Fix indentation }}
+			{{~/if~}}
+			{{! Fix indentation }}
+			{{~#ifCond "||" quantity unittype dimensions~}}
+			<physdescstructured coverage="whole" physdescstructuredtype="spaceoccupied">
+				<quantity>{{quantity}}</quantity>
+				<unittype>{{unittype}}</unittype>
+				<dimensions>{{dimensions}}</dimensions>
+			</physdescstructured>
+			{{! Fix indentation }}
+			{{~/ifCond~}}
+			{{! Fix indentation }}
+			{{~#if repository~}}
+			<repository>
 				<corpname>
-					<part>{{producer}}</part>
+					<part>{{repository}}</part>
 				</corpname>
-			</origination>
+			</repository>
+			{{! Fix indentation }}
+			{{~/if~}}
+			{{! Fix indentation }}
+			{{~#ifCond "||" language languageScriptNotes~}}
+			<langmaterial>
+				{{! Fix indentation }}
+				{{~#if language~}}
+				<language>{{language}}</language>
+				{{! Fix indentation }}
+				{{~/if~}}
+				{{! Fix indentation }}
+				{{~#if languageScriptNotes~}}
+				<descriptivenote>
+					<p>{{languageScriptNotes}}</p>
+				</descriptivenote>
+				{{~/if}}
+			</langmaterial>
+			{{~/ifCond~}}
+			{{~#if notes~}}
+			{{! Fix indentation }}
+			<didnote localtype="generalnote">{{notes}}</didnote>
+			{{~/if~}}
+			{{~#if creator~}}
+			{{! Fix indentation }}
 			<origination label="creator">
 				<persname>
 					<part>{{creator}}</part>
 				</persname>
 			</origination>
-			<langmaterial>
-				<language>{{language}}</language>
-			</langmaterial>
+			{{~/if~}}
+			{{~#if producer~}}
+			{{! Fix indentation }}
+			<origination label="producer">
+				<corpname>
+					<part>{{producer}}</part>
+				</corpname>
+			</origination>
+			{{~/if~}}
+			{{~#if materialspec~}}
+			{{! Fix indentation }}
+			<materialspec>{{materialspec}}</materialspec>
+			{{~/if~}}
+		{{! Fix indentation }}
 		</did>
+		{{~#if levelOfDetail~}}
+		{{! Fix indentation }}
+		<odd localtype="levelofdetail">
+			<p>{{levelOfDetail}}</p>
+		</odd>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#if statusDescription~}}
+		<odd localtype="statusdescription">
+			<p>{{statusDescription}}</p>
+		</odd>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#if scopeContent~}}
 		<scopecontent>
-			<p>{{description}}</p>
+			<p>{{scopeContent}}</p>
 		</scopecontent>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#if bioghist~}}
+		<bioghist>
+			<p>{{bioghist}}</p>
+		</bioghist>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#if arrangement~}}
+		<arrangement>
+			<p>{{arrangement}}</p>
+		</arrangement>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#if phystech~}}
+		<phystech>
+			<p>{{phystech}}</p>
+		</phystech>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#if appraisal~}}
+		<appraisal>
+			<p>{{appraisal}}</p>
+		</appraisal>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#if acqinfo~}}
+		<acqinfo>
+			<p>{{acqinfo}}</p>
+		</acqinfo>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#if accruals~}}
+		<accruals>
+			<p>{{accruals}}</p>
+		</accruals>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#if custodhist~}}
+		<custodhist>
+			<p>{{custodhist}}</p>
+		</custodhist>
+		{{! Fix indentation }}
+		{{~/if~}}
+		{{! Fix indentation }}
+		{{~#ifCond "||"  archivistNotes processInfoDate~}}
+		<processinfo>
+			{{~#if processInfoDate~}}
+			{{! Fix indentation }}
+			<p>
+				<date>{{processInfoDate}}</date>
+			</p>
+			{{~/if~}}
+			{{~#if archivistNotes~}}
+			{{! Fix indentation }}
+			<p>{{archivistNotes}}</p>
+			{{~/if~}}
+		{{! Fix indentation }}
+		</processinfo>
+		{{~/ifCond~}}
+		{{~#if originalsloc~}}
+		{{! Fix indentation }}
+		<originalsloc>
+			<p>{{originalsloc}}</p>
+		</originalsloc>
+		{{~/if~}}
+		{{~#if altformavail~}}
+		{{! Fix indentation }}
+		<altformavail>
+			<p>{{altformavail}}</p>
+		</altformavail>
+		{{~/if~}}
+		{{~#if relatedmaterial~}}
+		{{! Fix indentation }}
+		<relatedmaterial>
+			<p>{{relatedmaterial}}</p>
+		</relatedmaterial>
+		{{~/if~}}
+		{{~#if accessrestrict~}}
+		{{! Fix indentation }}
+		<accessrestrict>
+			<p>{{accessrestrict}}</p>
+		</accessrestrict>
+		{{~/if~}}
+		{{~#if userestrict~}}
+		{{! Fix indentation }}
 		<userestrict>
-			<p>{{rights}}</p>
+			<p>{{userestrict}}</p>
 		</userestrict>
+		{{~/if~}}
+		{{~#if otherfindaid~}}
+		{{! Fix indentation }}
+		<otherfindaid>
+			<p>{{otherfindaid}}</p>
+		</otherfindaid>
+		{{~/if~}}
+		{{~#if bibliography~}}
+		{{! Fix indentation }}
+		<bibliography>
+			<p>{{bibliography}}</p>
+		</bibliography>
+		{{~/if~}}
+	{{! Fix indentation }}
 	</archdesc>
-
 </ead>

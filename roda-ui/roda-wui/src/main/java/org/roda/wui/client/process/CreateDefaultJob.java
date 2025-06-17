@@ -70,7 +70,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.http.client.URL;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -84,7 +83,6 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RadioButton;
-import com.google.gwt.user.client.ui.TabBar;
 import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -132,7 +130,6 @@ public class CreateDefaultJob extends Composite {
   private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
   private static final ClientMessages messages = GWT.create(ClientMessages.class);
 
-  @SuppressWarnings("rawtypes")
   private SearchWrapper search = null;
   private List<PluginInfo> plugins = null;
   private PluginInfo selectedPlugin = null;
@@ -157,7 +154,7 @@ public class CreateDefaultJob extends Composite {
   TabPanel workflowTabPanel;
 
   @UiField
-  FlowPanel workflowList, workflowStoreList;
+  FlowPanel workflowList;
 
   @UiField
   FlowPanel workflowListPluginStatus;
@@ -292,7 +289,6 @@ public class CreateDefaultJob extends Composite {
                   @Override
                   public void onValueChange(ValueChangeEvent<Boolean> event) {
                     workflowList.clear();
-                    workflowStoreList.clear();
                     boolean noChecks = true;
 
                     if (plugins != null) {
@@ -380,11 +376,6 @@ public class CreateDefaultJob extends Composite {
           panelWidget.removeStyleName("plugin-list-item-selected");
         }
 
-        for (int i = 0; i < workflowStoreList.getWidgetCount(); i++) {
-          Widget panelWidget = workflowStoreList.getWidget(i);
-          panelWidget.removeStyleName("plugin-list-item-selected");
-        }
-
         if (selectedPluginId != null) {
           CreateDefaultJob.this.selectedPlugin = lookupPlugin(selectedPluginId);
           panel.addStyleName("plugin-list-item-selected");
@@ -416,9 +407,8 @@ public class CreateDefaultJob extends Composite {
 
     if (pluginInfo.isInstalled()) {
       workflowList.add(panel);
-    } else {
-      workflowStoreList.add(panel);
     }
+
     return panel;
   }
 
@@ -499,14 +489,6 @@ public class CreateDefaultJob extends Composite {
 
       targetListPanel.clear();
       defineTargetInformation(targetList.getSelectedValue());
-    }
-
-    // Remove store tab if there is no item on store
-    if (workflowStoreList.getWidgetCount() == 0) {
-      TabBar tabBar = workflowTabPanel.getTabBar();
-      if (tabBar.getTabCount() > 1) {
-        workflowTabPanel.remove(1);
-      }
     }
   }
 
@@ -608,26 +590,27 @@ public class CreateDefaultJob extends Composite {
       }
       statusPanel.add(badgePanel);
       statusPanel.add(statusMessage);
-    } else {
-      badgePanel.setIcon(HtmlSnippetUtils.getStackIcon("far fa-circle", "fas fa-slash"));
-      badgePanel.addStyleName("badge-panel-dark");
-      badgePanel.setText(messages.pluginNotInstalledLabel());
-      statusMessage.setText(messages.pluginNotInstalledMessage());
+    } 
+    // else {
+    //   badgePanel.setIcon(HtmlSnippetUtils.getStackIcon("far fa-circle", "fas fa-slash"));
+    //   badgePanel.addStyleName("badge-panel-dark");
+    //   badgePanel.setText(messages.pluginNotInstalledLabel());
+    //   statusMessage.setText(messages.pluginNotInstalledMessage());
 
-      MarketInfo marketInfo = selectedPlugin.getMarketInfo();
-      Button installBtn = new Button(messages.marketStoreInstallLabel());
-      installBtn.addStyleName("btn btn-download plugin-install-btn");
-      if (marketInfo != null && marketInfo.getLinkToQuote().get("en") != null) {
-        installBtn.addClickHandler(clickEvent -> Window.open(marketInfo.getLinkToQuote().get("en") + URL.encodeQueryString(marketInfo.getName()), "_blank", ""));
-      } else {
-        installBtn.addClickHandler(clickEvent -> Window.open(RodaConstants.DEFAULT_MARKET_SUPPORT_URL, "_blank", ""));
-      }
-      installBtn.addStyleName("btn plugin-status-btn");
+    //   MarketInfo marketInfo = selectedPlugin.getMarketInfo();
+    //   Button installBtn = new Button(messages.marketStoreInstallLabel());
+    //   installBtn.addStyleName("btn btn-download plugin-install-btn");
+    //   if (marketInfo != null && marketInfo.getLinkToQuote().get("en") != null) {
+    //     installBtn.addClickHandler(clickEvent -> Window.open(marketInfo.getLinkToQuote().get("en") + URL.encodeQueryString(marketInfo.getName()), "_blank", ""));
+    //   } else {
+    //     installBtn.addClickHandler(clickEvent -> Window.open(RodaConstants.DEFAULT_MARKET_SUPPORT_URL, "_blank", ""));
+    //   }
+    //   installBtn.addStyleName("btn plugin-status-btn");
 
-      statusPanel.add(badgePanel);
-      statusPanel.add(statusMessage);
-      statusPanel.add(installBtn);
-    }
+    //   statusPanel.add(badgePanel);
+    //   statusPanel.add(statusMessage);
+    //   statusPanel.add(installBtn);
+    // }
     statusPanel.setTitle(statusMessage.getText());
     workflowListPluginStatus.add(statusPanel);
   }

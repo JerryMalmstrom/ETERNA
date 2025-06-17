@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.roda-project</groupId>
         <artifactId>roda-ui</artifactId>
-        <version>0.2.0</version>
+        <version>0.3.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <properties>
@@ -658,7 +658,7 @@
         <dependency>
             <groupId>se.whitered.eterna</groupId>
             <artifactId>pdf-redactor</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
         <!-- Spring boot -->
         <dependency>
