@@ -1,4 +1,21 @@
 # ETERNA Changelog
+## v0.3.0 (2025-06-17)
+#### Security
+- Updated dependencies
+
+#### New features
+- Enabled EAD 3 support by default
+
+#### Improvements
+- Improved EAD 3 support
+- Fixed tab titles
+- Add missing translations
+- Removed unused plugin market tab
+
+#### Bug fixes
+- Fixed NPE in MarketUtils.java
+
+
 ## v0.2.0 (2025-05-13)
 #### New features
 - Added PDF Redaction tool
