@@ -29,6 +29,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.common.SolrInputDocument;
+import org.roda.core.RodaCoreFactory;
 import org.roda.core.common.iterables.CloseableIterable;
 import org.roda.core.data.common.RodaConstants;
 import org.roda.core.data.exceptions.AuthorizationDeniedException;
@@ -110,10 +111,13 @@ public class IndexModelObserver implements ModelObserver {
   private final SolrClient index;
   private final ModelService model;
 
+  private final boolean indexPreservationEvents;
+
   public IndexModelObserver(SolrClient index, ModelService model) {
     super();
     this.index = index;
     this.model = model;
+    this.indexPreservationEvents = RodaCoreFactory.getRodaConfiguration().getBoolean("core.index.preservation_event.enable", true);
   }
 
   @Override
@@ -216,6 +220,11 @@ public class IndexModelObserver implements ModelObserver {
 
   private ReturnWithExceptions<Void, ModelObserver> indexPreservationEvent(PreservationMetadata pm) {
     ReturnWithExceptions<Void, ModelObserver> ret = new ReturnWithExceptions<>(this);
+
+    if (!indexPreservationEvents) {
+      return ret;
+    }
+
     AIP aip = null;
     try {
       if (pm.getAipId() != null) {
