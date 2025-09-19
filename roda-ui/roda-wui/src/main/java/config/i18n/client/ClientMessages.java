@@ -1779,7 +1779,9 @@ public interface ClientMessages extends Messages {
 
   String pluginNotInstalledMessage();
 
-  SafeHtml pluginTrustedMessage(String publisher, String to);
+  SafeHtml pluginTrustedMessage(String publisher);
+
+  SafeHtml pluginLicensedMessage(String publisher, String to);
 
   SafeHtml pluginUntrustedMessage();
 
