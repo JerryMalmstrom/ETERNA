@@ -565,8 +565,14 @@ public abstract class CreateSelectedJob<T extends IsIndexed> extends Composite {
         badgePanel.addStyleName("badge-panel-success");
         CertificateInfo.Certificate certificate = certificateInfo.getCertificates().iterator().next();
         String issuer = certificate.getOrganizationName(certificate.getIssuerDN());
+        statusMessage.setHTML(messages.pluginTrustedMessage(issuer));
+      } else if (CertificateInfo.CertificateStatus.LICENSED.equals(certificateStatus)) {
+        badgePanel.setIcon("fas fa-shield-alt");
+        badgePanel.addStyleName("badge-panel-success");
+        CertificateInfo.Certificate certificate = certificateInfo.getCertificates().iterator().next();
+        String issuer = certificate.getOrganizationName(certificate.getIssuerDN());
         String subject = certificate.getOrganizationName(certificate.getSubjectDN());
-        statusMessage.setHTML(messages.pluginTrustedMessage(issuer, subject));
+        statusMessage.setHTML(messages.pluginLicensedMessage(issuer, subject));
       } else {
         badgePanel.setIcon(HtmlSnippetUtils.getStackIcon("fas fa-shield-alt", "fas fa-slash"));
         badgePanel.addStyleName("badge-panel-danger");

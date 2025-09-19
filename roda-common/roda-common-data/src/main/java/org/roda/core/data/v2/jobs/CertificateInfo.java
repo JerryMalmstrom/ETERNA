@@ -18,7 +18,7 @@ import java.util.Objects;
 public class CertificateInfo implements Serializable {
   private static final long serialVersionUID = 5755199988566186742L;
   public enum CertificateStatus {
-    INTERNAL, VERIFIED, NOT_VERIFIED
+    INTERNAL, VERIFIED, LICENSED, NOT_VERIFIED
   }
   private CertificateStatus certificateStatus = CertificateStatus.INTERNAL;
   private HashSet<Certificate> certificates = new HashSet<>();
