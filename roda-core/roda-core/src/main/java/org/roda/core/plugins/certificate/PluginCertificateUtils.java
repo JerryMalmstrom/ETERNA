@@ -17,11 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.List;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
@@ -77,7 +73,12 @@ public class PluginCertificateUtils {
             try {
               trustManager.checkServerTrusted(x509Certificates,
                 RodaConstants.PLUGINS_CERTIFICATE_DEFAULT_TRUSTSTORE_AUTH_TYPE);
-              certificateInfo.setCertificateStatus(CertificateInfo.CertificateStatus.VERIFIED);
+
+              if (Objects.equals(subjectDN, issuerDN)) {
+                certificateInfo.setCertificateStatus(CertificateInfo.CertificateStatus.VERIFIED);
+              } else {
+                certificateInfo.setCertificateStatus(CertificateInfo.CertificateStatus.LICENSED);
+              }
             } catch (CertificateException e) {
               LOGGER.error(e.getMessage(), e);
               certificateInfo.setCertificateStatus(CertificateInfo.CertificateStatus.NOT_VERIFIED);
