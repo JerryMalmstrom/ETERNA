@@ -1,4 +1,9 @@
 # ETERNA Changelog
+## v0.4.1 (2025-10-07)
+#### Improvments
+- Updated footer links
+- Categorized documention documents into category folders
+
 ## v0.4.0 (2025-09-22)
 #### New features
 * Added missing functionality to set the preservation state of converted representations to `PRESERVATION` in AbstractConvertPlugin
