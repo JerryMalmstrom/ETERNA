@@ -1,10 +1,10 @@
 # Edit descriptive metadata
 
-You can edit descriptive metadata directly on the Intellection Entity browse page by clicking the button ![Edit](images/md_edit.png "Edit metadata").
+You can edit descriptive metadata directly on the Intellection Entity browse page by clicking the button ![Edit](../images/md_edit.png "Edit metadata").
 
 If the descriptive metadata schema is supported (by default or on your configuration), then you can have a web form to edit the metadata. Information like the title will commonly be on the Title field.
 
-You can also edit the XML directly, by clicking the  ![Edit code](images/md_edit_code.png "Edit metadata XML") and changing the raw XML.
+You can also edit the XML directly, by clicking the  ![Edit code](../images/md_edit_code.png "Edit metadata XML") and changing the raw XML.
 
 When finished click SAVE.
 
@@ -12,7 +12,7 @@ When finished click SAVE.
 
 You must define the descriptive metadata type, which defined the rules on how metadata is validated, indexed, viewed and edited. Descriptive metadata types have a name and a version, for example Encoded Archival Description (EAD) version 2002, Dublin Core version 2002-12-12.
 
-You can add your own descriptive metadata types and their configuration to validate, index, view an edit with a form, for more information see [Metadata formats](Metadata_Formats.md).
+You can add your own descriptive metadata types and their configuration to validate, index, view an edit with a form, for more information see [Metadata formats](../reference/Metadata_Formats.md).
 
 ## Edit warnings
 
@@ -28,10 +28,10 @@ On saving the produced XML will be checked against the XML schema (if configured
 
 ## Versioning
 
-Metadata editions are versioned, you can list all past versions by clicking the ![Past versions](images/md_versions.png "Past versions of desc. metadata").
+Metadata editions are versioned, you can list all past versions by clicking the ![Past versions](../images/md_versions.png "Past versions of desc. metadata").
 
 You can browse the past versions on a dropdown menu, which has information about who made the change and when. You can also restore a past version by cliking REVERT, and remove a past version by clicking REMOVE.
 
 ## Downloading
 
-You can download the descriptive metadata raw XML by clicking ![Download](images/md_download.png "Download desc. metadata")
+You can download the descriptive metadata raw XML by clicking ![Download](../images/md_download.png "Download desc. metadata")
