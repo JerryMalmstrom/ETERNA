@@ -6,7 +6,7 @@ Se *Hjälp* > *Användning* > *Gallringspolicys* för mer information om gallrin
 
 ### 1. Konfigurera ETERNA för att fält ska överensstämma
 
-För att identifierade element ska överensstämma populeras de genom att använda avancerad sökning. De fält som har `datum_intervall` som typ, kommer väljas och användas som räknare i perioden. 
+För att identifierade element ska överensstämma populeras de genom att använda avancerad sökning. De fält som har `date_interval` som typ, kommer väljas och användas som räknare i perioden. 
 Gå till *Hjälp* > *Användning* > *Avancerad sök* för mer information om hur man lägger till nya fält. 
 
 ## Gallringsregel
