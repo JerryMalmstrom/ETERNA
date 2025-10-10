@@ -108,7 +108,40 @@ public class FormUtilities {
     }
   }
 
-  private static String getFieldLabel(MetadataValue mv) {
+  public static String getLocalizedListValue(MetadataValue mv, String storedValue) {
+    String list = mv.get("optionsLabels");
+    if (list != null) {
+      try {
+        JSONObject jsonObject = JSONParser.parseLenient(list).isObject();
+        if (jsonObject != null) {
+          String loc = LocaleInfo.getCurrentLocale().getLocaleName();
+          JSONValue entry = jsonObject.get(storedValue);
+          if (entry != null && entry.isObject() != null) {
+            JSONValue jsonValue = entry.isObject().get(loc);
+            if (jsonValue != null && jsonValue.isString() != null) {
+              return jsonValue.isString().stringValue();
+            } else if (loc.contains("_")) {
+              // Try language prefix
+              jsonValue = entry.isObject().get(loc.split("_")[0]);
+              if (jsonValue != null && jsonValue.isString() != null) {
+                return jsonValue.isString().stringValue();
+              }
+            }
+            // Fallback to 'en'
+            jsonValue = entry.isObject().get("en");
+            if (jsonValue != null && jsonValue.isString() != null) {
+              return jsonValue.isString().stringValue();
+            }
+          }
+        }
+      } catch (Exception e) {
+        // Ignore and return stored value
+      }
+    }
+    return storedValue; // Fallback to stored value if localization fails
+  }
+
+  public static String getFieldLabel(MetadataValue mv) {
     String result = mv.getId();
     String rawLabel = mv.get("label");
     if (rawLabel != null && rawLabel.length() > 0) {
@@ -129,10 +162,26 @@ public class FormUtilities {
               if (jsonString != null) {
                 result = jsonString.stringValue();
               }
+            } else {
+              // Try fallback to 'en' if current language prefix not found
+              jsonValue = jsonObject.get("en");
+              if (jsonValue != null) {
+                JSONString jsonString = jsonValue.isString();
+                if (jsonString != null) {
+                  result = jsonString.stringValue();
+                }
+              }
+            }
+          } else {
+            // Try fallback to 'en' if locale doesn't contain '_'
+            jsonValue = jsonObject.get("en");
+            if (jsonValue != null) {
+              JSONString jsonString = jsonValue.isString();
+              if (jsonString != null) {
+                result = jsonString.stringValue();
+              }
             }
           }
-          // label for the desired language doesn't exist
-          // do nothing
         }
       } catch (JSONException e) {
         // The JSON was malformed
