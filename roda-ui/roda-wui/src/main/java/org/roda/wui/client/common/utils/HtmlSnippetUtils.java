@@ -601,10 +601,26 @@ public class HtmlSnippetUtils {
               if (jsonString != null) {
                 result = jsonString.stringValue();
               }
+            } else {
+              // Try fallback to 'en' if current language prefix not found
+              jsonValue = jsonObject.get("en");
+              if (jsonValue != null) {
+                JSONString jsonString = jsonValue.isString();
+                if (jsonString != null) {
+                  result = jsonString.stringValue();
+                }
+              }
+            }
+          } else {
+            // Try fallback to 'en' if locale doesn't contain '_'
+            jsonValue = jsonObject.get("en");
+            if (jsonValue != null) {
+              JSONString jsonString = jsonValue.isString();
+              if (jsonString != null) {
+                result = jsonString.stringValue();
+              }
             }
           }
-          // label for the desired language doesn't exist
-          // do nothing
         }
       } catch (JSONException e) {
         // The JSON was malformed
