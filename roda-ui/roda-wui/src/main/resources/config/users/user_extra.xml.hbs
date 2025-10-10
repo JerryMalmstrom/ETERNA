@@ -1,39 +1,179 @@
 {{!-- uncomment the following fields to add more properties to the user --}}
-{{!--
-{{~field name="identificationArea" 		order="10" type="separator" label="{\"en\": \"Identification\", \"pt_PT\": \"Identificação\"}"~}}
-{{~field name="idType" 					order="20" type="list" options="[\"ID Card\",\"Passport\",\"Citizen Card\"]" label="{'en': 'Document of identification', 'pt_PT': 'Documento de identificação'}" xpath="//*:idType/string()"~}}
-{{~field name="idNumber" 				order='30' label="{'en': 'Identification number','pt_PT': 'Número de identificação'}" xpath="//*:idNumber/string()"~}}
-{{~field name="idDate" 					order='40' type='date' label="{'en': 'Date of issue', 'pt_PT': 'Data de emissão'}" xpath="//*:idDate/string()"~}}
-{{~field name="idLocality" 				order='50' label="{'en': 'Locality of issue', 'pt_PT': 'Local de emissão'}" xpath="//*:idLocality/string()"~}}
-{{~field name="nif" 					order='60' label="{'en': 'Fiscal ID', 'pt_PT': 'Nº de Identificação Fiscal'}" xpath="//*:nif/string()"~}}
-{{~field name="personalInformation" 			order="65" type="separator" label="{\"en\": \"Personal information\", \"pt_PT\": \"Informação pessoal\"}"~}}
-{{~field name="nationality" 			order='70' label="{'en': 'Country of birth', 'pt_PT': 'Nacionalidade'}" xpath="//*:nationality/string()"~}}
-{{~field name="postalAddress" 			order='80' type="textarea" label="{'en': 'Postal address', 'pt_PT': 'Endereço postal'}" xpath="//*:postalAddress/string()"~}}
-{{~field name="postalCode" 				order='90' label="{'en': 'Postal code', 'pt_PT': 'Código postal'}" xpath="//*:postalCode/string()"~}}
-{{~field name="locality" 				order='100' label="{'en': 'Locality', 'pt_PT': 'Localidade'}" xpath="//*:locality/string()"~}}
-{{~field name="country" 				order='110' label="{'en': 'Country of residence', 'pt_PT': 'País de residência'}" xpath="//*:country/string()"~}}
-{{~field name="businessCategory" 		order="112" type="list" options="[\"Public service\",\"Art and culture\",\"Social care\",\"Architecture and engineering\",\"Commerce and services\",\"Legal services\",\"Financial services\",\"Consulting services\",\"Education\",\"Research\",\"Higher education\",\"Industry\",\"Creative industries\",\"Social media\",\"Information services\"]" label="{'en': 'Area of activity', 'pt_PT': 'Área de actividade'}" xpath="//*:businessCategory/string()"~}}
-{{~field name="contactArea" 			order="115" type="separator" label="{\"en\": \"Contacts\", \"pt_PT\": \"Contactos\"}"~}}
-{{~field name="phoneNumber" 			order='120' label="{'en': 'Phone number', 'pt_PT': 'Contacto telefónico'}" xpath="//*:phoneNumber/string()"~}}
-{{~field name="fax" 					order='130' label="{'en': 'Fax', 'pt_PT': 'Fax'}" xpath="//*:fax/string()"~}}
---}}
-{{~field name="notesArea" 				type="separator"	order='140' label="{'en': 'Notes', 'pt_PT': 'Notas'}"~}}
-{{~field name="notes" 				type="textarea"	order='150' label="{'en': 'Notes', 'pt_PT': 'Notas'}" xpath="//*:notes/string()"~}}
-<?xml version="1.0"?>
+{{!-- Translation keys are centralized in ServerMessages.properties (EN) and ServerMessages_sv_SE.properties (SV).
+     labeli18n uses server-side translations, label provides inline JSON fallback for client-side translations. --}}
+
+{{!-- Identification Area --}}
+{{!-- {{~field
+name="identificationArea"
+order="10"
+type="separator"
+label='{"en": "Identification", "sv_SE": "Identifikation"}'
+labeli18n="user.extra.identification.area"
+~}} --}}
+
+{{!-- {{~field
+name="idType"
+order="20"
+type="list"
+options='["ID Card","Passport","Citizen Card"]'
+optionsLabels='{"ID Card": {"en": "ID Card", "sv_SE": "ID-kort"}, "Passport": {"en": "Passport",
+"sv_SE": "Pass"}, "Citizen Card": {"en": "Citizen Card", "sv_SE": "Medborgarkort"}}'
+label='{"en": "Document of identification", "sv_SE": "Identitetsdokument"}'
+labeli18n="user.extra.document.type"
+xpath="//*:idType/string()"
+~}} --}}
+
+{{!-- {{~field
+name="idNumber"
+order="30"
+label='{"en": "Identification number", "sv_SE": "Identifikationsnummer"}'
+labeli18n="user.extra.identification.number"
+xpath="//*:idNumber/string()"
+~}} --}}
+
+{{!-- {{~field
+name="idDate"
+order="40"
+type='date'
+label='{"en": "Date of issue", "sv_SE": "Utfärdandedatum"}'
+labeli18n="user.extra.date.issue"
+xpath="//*:idDate/string()"
+~}} --}}
+
+{{!-- {{~field
+name="idLocality"
+order="50"
+label='{"en": "Locality of issue", "sv_SE": "Utfärdandeort"}'
+labeli18n="user.extra.locality.issue"
+xpath="//*:idLocality/string()"
+~}} --}}
+
+{{!-- {{~field
+name="nif"
+order="60"
+label='{"en": "Fiscal ID", "sv_SE": "Skatte-ID"}'
+labeli18n="user.extra.fiscal.id"
+xpath="//*:nif/string()"
+~}} --}}
+
+{{!-- Personal Information Area --}}
+{{!-- {{~field
+name="personalInformation"
+order="65"
+type="separator"
+label='{"en": "Personal information", "sv_SE": "Personlig information"}'
+labeli18n="user.extra.personal.information"
+~}} --}}
+
+{{!-- {{~field
+name="nationality"
+order="70"
+label='{"en": "Country of birth", "sv_SE": "Födelseland"}'
+labeli18n="user.extra.country.birth"
+xpath="//*:nationality/string()"
+~}} --}}
+
+{{!-- {{~field
+name="postalAddress"
+order="80"
+type="textarea"
+label='{"en": "Postal address", "sv_SE": "Postadress"}'
+labeli18n="user.extra.postal.address"
+xpath="//*:postalAddress/string()"
+~}} --}}
+
+{{!-- {{~field
+name="postalCode"
+order="90"
+label='{"en": "Postal code", "sv_SE": "Postnummer"}'
+labeli18n="user.extra.postal.code"
+xpath="//*:postalCode/string()"
+~}} --}}
+
+{{!-- {{~field
+name="locality"
+order="100"
+label='{"en": "Locality", "sv_SE": "Ort"}'
+labeli18n="user.extra.locality"
+xpath="//*:locality/string()"
+~}} --}}
+
+{{!-- {{~field
+name="country"
+order="110"
+label='{"en": "Country of residence", "sv_SE": "Bosättningsland"}'
+labeli18n="user.extra.country.residence"
+xpath="//*:country/string()"
+~}} --}}
+
+{{!-- Business Information Area --}}
+{{!-- {{~field
+name="businessCategory"
+order="112"
+type="list"
+options='["Public service","Art and culture","Socialcare","Architecture and engineering","Commerce and services","Legal services","Financial services","Consulting services","Education","Research","Higher education","Industry","Creative industries","Social media","Information services"]'
+optionsLabels='{"Public service":{"en":"Public service","sv_SE":"Offentlig tjänst"},"Art and culture":{"en":"Art and culture","sv_SE":"Konst och kultur"},"Socialcare":{"en":"Social care","sv_SE":"Social omsorg"},"Architecture and engineering":{"en":"Architecture and engineering","sv_SE":"Arkitektur och ingenjörskonst"},"Commerce and services":{"en":"Commerce and services","sv_SE":"Handel och tjänster"},"Legal services":{"en":"Legal services","sv_SE":"Juridiska tjänster"},"Financial services":{"en":"Financial services","sv_SE":"Finansiella tjänster"},"Consulting services":{"en":"Consulting services","sv_SE":"Konsulttjänster"},"Education":{"en":"Education","sv_SE":"Utbildning"},"Research":{"en":"Research","sv_SE":"Forskning"},"Higher education":{"en":"Higher education","sv_SE":"Högskoleutbildning"},"Industry":{"en":"Industry","sv_SE":"Industri"},"Creative industries":{"en":"Creative industries","sv_SE":"Kreativa industrier"},"Social media":{"en":"Social media","sv_SE":"Sociala medier"},"Information services":{"en":"Information services","sv_SE":"Informationstjänster"}}'
+label='{"en": "Area of activity", "sv_SE": "Verksamhetsområde"}'
+labeli18n="user.extra.business.category"
+xpath="//*:businessCategory/string()"
+~}} --}}
+
+{{!-- Contact Area --}}
+{{!-- {{~field
+name="contactArea"
+order="115"
+type="separator"
+label='{"en": "Contacts", "sv_SE": "Kontakt"}'
+labeli18n="user.extra.contacts"
+~}} --}}
+
+{{!-- {{~field
+name="phoneNumber"
+order="120"
+label='{"en": "Phone number", "sv_SE": "Telefonnummer"}'
+labeli18n="user.extra.phone.number"
+xpath="//*:phoneNumber/string()"
+~}} --}}
+
+{{!-- {{~field
+name="fax"
+order="130"
+label='{"en": "Fax", "sv_SE": "Fax"}'
+labeli18n="user.extra.fax"
+xpath="//*:fax/string()"
+~}} --}}
+
+{{!-- Notes Area --}}
+{{~field
+name="notesArea"
+type="separator"
+order="140"
+label='{"en": "Notes", "sv_SE": "Anteckningar"}'
+labeli18n="user.extra.notes.area"
+~}}
+
+{{~field
+name="notes"
+type="textarea"
+order="150"
+label='{"en": "Notes", "sv_SE": "Anteckningar"}'
+labeli18n="user.extra.notes"
+xpath="//*:notes/string()"
+~}}
 
 <extra>
-	<!-- <businessCategory>{{businessCategory}}</businessCategory>
-	<idType>{{idType}}</idType>
-	<idNumber>{{idNumber}}</idNumber>
-	<idDate>{{idDate}}</idDate>
-	<idLocality>{{idLocality}}</idLocality>
-	<nif>{{nif}}</nif>
-	<postalAddress>{{postalAddress}}</postalAddress>
-	<postalCode>{{postalCode}}</postalCode>
-	<locality>{{locality}}</locality>
-	<phoneNumber>{{phoneNumber}}</phoneNumber>
-	<fax>{{fax}}</fax>
-	<country>{{country}}</country>
-	<nationality>{{nationality}}</nationality> -->
+	{{!-- <businessCategory>{{businessCategory}}</businessCategory> --}}
+	{{!-- <idType>{{idType}}</idType> --}}
+	{{!-- <idNumber>{{idNumber}}</idNumber> --}}
+	{{!-- <idDate>{{idDate}}</idDate> --}}
+	{{!-- <idLocality>{{idLocality}}</idLocality> --}}
+	{{!-- <nif>{{nif}}</nif> --}}
+	{{!-- <postalAddress>{{postalAddress}}</postalAddress> --}}
+	{{!-- <postalCode>{{postalCode}}</postalCode> --}}
+	{{!-- <locality>{{locality}}</locality> --}}
+	{{!-- <phoneNumber>{{phoneNumber}}</phoneNumber> --}}
+	{{!-- <fax>{{fax}}</fax> --}}
+	{{!-- <country>{{country}}</country> --}}
+	{{!-- <nationality>{{nationality}}</nationality> --}}
 	<notes>{{notes}}</notes>
 </extra>
