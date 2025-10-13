@@ -114,9 +114,9 @@ public class FormUtilities {
       try {
         JSONObject jsonObject = JSONParser.parseLenient(list).isObject();
         if (jsonObject != null) {
-          String loc = LocaleInfo.getCurrentLocale().getLocaleName();
           JSONValue entry = jsonObject.get(storedValue);
           if (entry != null && entry.isObject() != null) {
+            String loc = LocaleInfo.getCurrentLocale().getLocaleName();
             JSONValue jsonValue = entry.isObject().get(loc);
             if (jsonValue != null && jsonValue.isString() != null) {
               return jsonValue.isString().stringValue();
