@@ -85,7 +85,7 @@ This is a complex question that cannot be answered in just a few lines of text. 
 
 ### How does the application support appraisal, selection the definition of retention periods?
 
-ETERNA provides a complex workflow for disposal of records. Please refer to [Disposal](Disposal.md) for more information.
+ETERNA provides a complex workflow for disposal of records. Please refer to [Disposal](../administration/Disposal.md) for more information.
 
 ### Is the system logging search interactions?
 
@@ -99,4 +99,4 @@ Not really. A modern browser is sufficient.
 
 ### How to set up the development environment for ETERNA?
 
-Complete instructions on how to set up the development environment are available at: [Developers guide](Developers_Guide.md).
+Complete instructions on how to set up the development environment are available at: [Developers guide](../development/Developers_Guide.md).

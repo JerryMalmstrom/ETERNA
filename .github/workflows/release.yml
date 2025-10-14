@@ -90,7 +90,6 @@ jobs:
         with:
           images: |
             ghcr.io/ETERNA-earkiv/ETERNA
-            ETERNA-earkiv/ETERNA
           tags: |
             type=semver,pattern=v{{version}}
             type=semver,pattern=v{{major}}.{{minor}}

@@ -1,4 +1,26 @@
 # ETERNA Changelog
+## v0.4.2 (2025-10-14)
+#### New features
+- Added functionality to display user extra fields in the user details view
+- Added new internationalization (i18n) keys for configurable user extra fields
+- Added new Swedish translations for user extra fields
+- Added new Swedish documentation for User Configuration detailing the configuration and management of User Extra Fields
+
+#### Improvements
+- Updated Developer's Guide to require Oracle Java 21
+- Updated internal links in the Swedish footer to reflect restructured documentation paths
+- Updated field type `datum_intervall` to `date_interval` in Swedish disposal documentation
+- Updated link to Swedish metadata formats documentation in `Descriptive_Metadata_Types_sv_SE.md`
+- Updated relative paths for images and links in EditDescriptiveMetadata.md and its Swedish version
+- Corrected relative links to Disposal and Developers Guide documentation in FAQ
+- Adjusted relative image paths in Statistics.md and its Swedish version to ensure images display correctly
+- Corrected image paths in Disposal Policies documentation and its Swedish version
+- Updated footer links to reflect updated documentation structure
+- Updated contact email for reporting incidents in `CODE_OF_CONDUCT.md` to `info@whitered.se`
+
+#### Cleanup
+- Removed unused localized HTML files for various languages
+
 ## v0.4.1 (2025-10-07)
 #### Improvments
 - Updated footer links

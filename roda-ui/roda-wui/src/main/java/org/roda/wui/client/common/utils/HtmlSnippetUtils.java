@@ -52,18 +52,13 @@ import org.roda.wui.client.browse.BrowseTop;
 import org.roda.wui.client.browse.MetadataValue;
 import org.roda.wui.client.browse.RepresentationInformationHelper;
 import org.roda.wui.client.planning.RepresentationInformationAssociations;
+import org.roda.wui.client.common.utils.FormUtilities;
 import org.roda.wui.common.client.tools.HistoryUtils;
 import org.roda.wui.common.client.tools.Humanize;
 import org.roda.wui.common.client.tools.RestUtils;
 import org.roda.wui.common.client.tools.StringUtils;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.i18n.client.LocaleInfo;
-import com.google.gwt.json.client.JSONException;
-import com.google.gwt.json.client.JSONObject;
-import com.google.gwt.json.client.JSONParser;
-import com.google.gwt.json.client.JSONString;
-import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -580,48 +575,13 @@ public class HtmlSnippetUtils {
     }
   }
 
-  private static String getFieldLabel(MetadataValue mv) {
-    String result = mv.getId();
-    String rawLabel = mv.get("label");
-    if (rawLabel != null && rawLabel.length() > 0) {
-      String loc = LocaleInfo.getCurrentLocale().getLocaleName();
-      try {
-        JSONObject jsonObject = JSONParser.parseLenient(rawLabel).isObject();
-        JSONValue jsonValue = jsonObject.get(loc);
-        if (jsonValue != null) {
-          JSONString jsonString = jsonValue.isString();
-          if (jsonString != null) {
-            result = jsonString.stringValue();
-          }
-        } else {
-          if (loc.contains("_")) {
-            jsonValue = jsonObject.get(loc.split("_")[0]);
-            if (jsonValue != null) {
-              JSONString jsonString = jsonValue.isString();
-              if (jsonString != null) {
-                result = jsonString.stringValue();
-              }
-            }
-          }
-          // label for the desired language doesn't exist
-          // do nothing
-        }
-      } catch (JSONException e) {
-        // The JSON was malformed
-        // do nothing
-      }
-    }
-    mv.set("l", result);
-    return result;
-  }
-
   private static boolean addField(FlowPanel panel, final FlowPanel layout, final MetadataValue mv,
     final boolean mandatory) {
     layout.addStyleName("field");
 
     if (StringUtils.isNotBlank(mv.get("value"))) {
       // Top label
-      Label mvLabel = new Label(getFieldLabel(mv));
+      Label mvLabel = new Label(FormUtilities.getFieldLabel(mv));
       mvLabel.addStyleName("label");
 
       // Field
@@ -645,7 +605,7 @@ public class HtmlSnippetUtils {
 
     if (StringUtils.isNotBlank(mv.get("value"))) {
       // Top label
-      Label mvLabel = new Label(getFieldLabel(mv));
+      Label mvLabel = new Label(FormUtilities.getFieldLabel(mv));
       mvLabel.addStyleName("label");
 
       // Field
@@ -664,7 +624,7 @@ public class HtmlSnippetUtils {
 
   private static void addSeparator(FlowPanel panel, final FlowPanel layout, final MetadataValue mv) {
     layout.addStyleName("form-separator");
-    Label mvLabel = new Label(getFieldLabel(mv));
+    Label mvLabel = new Label(FormUtilities.getFieldLabel(mv));
     layout.add(mvLabel);
     panel.add(layout);
   }

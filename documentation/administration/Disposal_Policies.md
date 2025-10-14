@@ -42,19 +42,19 @@ The following attributes categorizes a disposal schedule:
 
 This type of disposal schedule, with no retention trigger, has the effect of preventing the calculation of a retention start date and a subsequent retention period.
 
-![Permanent retention life cycle](images/permanent_retention_life_cycle.png "Permanent retention life cycle")
+![Permanent retention life cycle](../images/permanent_retention_life_cycle.png "Permanent retention life cycle")
 
 #### Review life cycle
 
 When a record’s disposal action is set to review, it is not immediately subject to destruction. Instead, the outcome of the review must include the application of a disposal schedule to the record based on the review decision. The new disposal schedule will replace the previous disposal schedule associated with the record and will then specify the ultimate fate of the record, or it may be used to schedule another later review, or to retain the record permanently.
 
-![Review life cycle](images/review_life_cycle.png "Review life cycle")
+![Review life cycle](../images/review_life_cycle.png "Review life cycle")
 
 #### Destruction life cycle
 
 The destruction of records is subject to particular constraints. How records are destroyed will depend on the nature of the content of their components. ETERNA allows to prune descriptive metadata using [XSLT (eXtensible Stylesheet Language Transformations)](http://www.w3.org/standards/xml/transformation.html). All the files associated to the record are destroyed leaving the record in a destroyed state. 
 
-![Desctuction life cycle](images/destruction_life_cycle.png "Destruction life cycle")
+![Desctuction life cycle](../images/destruction_life_cycle.png "Destruction life cycle")
 
 ## Disposal Rules
 

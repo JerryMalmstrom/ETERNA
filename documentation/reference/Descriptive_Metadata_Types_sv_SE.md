@@ -9,7 +9,7 @@ Detta hänvisar till det beskrivande metadataschemat som kommer att användas, o
 * **[Key-value](https://github.com/ETERNA-earkiv/ETERNA/blob/main/roda-core/roda-core/src/main/resources/config/schemas/key-value.xsd)** : Ett internt enkelt beskrivningsschema för ETERNA för definition av nyckel-värde metadata, där metadatanyckeln identifierar elementet (t.ex. "titel") och värdet innehållet i metadataelementet.
 *  **Övrigt**: Generisk XML-typ där inget schema är definierat.
 
-Nya metadatatyper kan läggas till i ETERNA enligt dokumentationen [Metadata formats](Metadata_Formats.md).
+Nya metadatatyper kan läggas till i ETERNA enligt dokumentationen [Metadata formats](Metadata_Formats_sv_SE.md).
 
 | Beskrivande metadatatyp | Validering           | Indexering         | Visualisering         | Version      |
 |---------------------------|----------------------|------------------|-----------------------|--------------|

@@ -42,19 +42,19 @@ Följande attribut kategoriserar ett gallringsschema:
 
 Denna typ av gallringsschema, utan trigger för bevaringsperiod, förhindrar beräkningen av ett startdatum för bevaring och en efterföljande bevarandeperiod.
 
-![Permanent retention life cycle](images/permanent_retention_life_cycle.png "Permanent bevaringslivscykel")
+![Permanent retention life cycle](../images/permanent_retention_life_cycle.png "Permanent bevaringslivscykel")
 
 #### Granska livscykel
 
 När ett bevarandeobjekts gallringsåtgärd är inställd på granskning är den inte omedelbart föremål för gallring. Istället måste resultatet av granskningen innefatta tillämpning av ett gallringsschema på objektet baserat på granskningsbeslutet. Det nya gallringsschemat kommer att ersätta det tidigare gallringsschemat som är associerat med objektet och kommer då att ange vad som slutligen kommer att ske med objektet, eller så kan det användas för att schemalägga ytterligare en senare granskning eller för att behålla objektet permanent.
 
-![Review life cycle](images/review_life_cycle.png "Granska livscykel")
+![Review life cycle](../images/review_life_cycle.png "Granska livscykel")
 
 #### Gallringslivscykeln
 
 Gallringen av bevarandeobjekt har vissa begränsningar. Hur objekten gallras beror på innehållet i dess komponenter. ETERNA kan rensa beskrivande metadata med hjälp av [XSLT (eXtensible Stylesheet Language Transformations)](http://www.w3.org/standards/xml/transformation.html). Alla filer som är associerade med objektet gallras och lämnar objektet i ett gallrat tillstånd.
 
-![Desctuction life cycle](images/destruction_life_cycle.png "Livscykel förstöring")
+![Desctuction life cycle](../images/destruction_life_cycle.png "Livscykel förstöring")
 
 ## Gallringsregler
 
